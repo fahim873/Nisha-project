@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIS Club — About ✨</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ---------- GLOBAL STYLES ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Poppins', 'Segoe UI', sans-serif; 
+  background: #0f0c29;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  color: #f0f0f0; 
+  line-height: 1.6; 
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 105, 180, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 80% 70%, rgba(0, 191, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 40% 80%, rgba(147, 112, 219, 0.1) 0%, transparent 20%);
+  z-index: -1;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ---------- CUTE BUBBLES ---------- */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 182, 193, 0.15);
+  backdrop-filter: blur(5px);
+  z-index: -1;
+  animation: float 15s infinite ease-in-out;
+}
+
+.bubble:nth-child(1) {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+  background: radial-gradient(circle, rgba(255, 107, 157, 0.2), transparent 70%);
+  border: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+.bubble:nth-child(2) {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  right: 8%;
+  animation-delay: 2s;
+  background: radial-gradient(circle, rgba(123, 104, 238, 0.2), transparent 70%);
+  border: 2px solid rgba(123, 104, 238, 0.3);
+}
+
+.bubble:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  bottom: 15%;
+  left: 10%;
+  animation-delay: 4s;
+  background: radial-gradient(circle, rgba(0, 206, 209, 0.2), transparent 70%);
+  border: 2px solid rgba(0, 206, 209, 0.3);
+}
+
+.bubble:nth-child(4) {
+  width: 60px;
+  height: 60px;
+  bottom: 25%;
+  right: 15%;
+  animation-delay: 6s;
+  background: radial-gradient(circle, rgba(255, 107, 157, 0.2), transparent 70%);
+  border: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+.bubble:nth-child(5) {
+  width: 90px;
+  height: 90px;
+  top: 60%;
+  left: 80%;
+  animation-delay: 8s;
+  background: radial-gradient(circle, rgba(123, 104, 238, 0.2), transparent 70%);
+  border: 2px solid rgba(123, 104, 238, 0.3);
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg) scale(1);
+    box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2);
+  }
+  25% { 
+    transform: translateY(-20px) rotate(5deg) scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 182, 193, 0.3);
+  }
+  50% { 
+    transform: translateY(10px) rotate(-5deg) scale(0.95);
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.1);
+  }
+  75% { 
+    transform: translateY(-10px) rotate(3deg) scale(1.02);
+    box-shadow: 0 12px 25px rgba(255, 182, 193, 0.25);
+  }
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(20, 15, 60, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 15px 30px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+.nav-left, .nav-right { display: flex; align-items: center; gap: 25px; }
+.logo { display: flex; align-items: center; justify-content: center; margin: 0 30px; }
+.logo-circle {
+  width: 90px; height: 90px; border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 
+    0 8px 32px rgba(255, 107, 157, 0.4),
+    0 0 0 2px rgba(255, 182, 193, 0.5),
+    0 0 0 4px rgba(123, 104, 238, 0.3);
+  border: 2px solid #ffffff;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-circle::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.logo-circle:hover { 
+  transform: scale(1.15) rotate(10deg); 
+  box-shadow: 
+    0 12px 40px rgba(255, 107, 157, 0.6),
+    0 0 0 3px rgba(255, 182, 193, 0.7),
+    0 0 0 6px rgba(123, 104, 238, 0.4);
+}
+.logo-circle span { 
+  color: #ffffff; 
+  font-weight: 800; 
+  font-size: 32px; 
+  letter-spacing: 1px; 
+  text-align: center; 
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+.nav-left a, .nav-right a { 
+  color: #f0f0f0; 
+  font-weight: 600; 
+  padding: 10px 15px; 
+  border-radius: 12px;
+  transition: all 0.3s ease; 
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-left a::before, .nav-right a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.nav-left a:hover, .nav-right a:hover { 
+  color: #ffd1dc; 
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.nav-left a:hover::before, .nav-right a:hover::before {
+  width: 80%;
+}
+
+/* Active link */
+.nav-left a[href*="about.html"] {
+  color: #ffd1dc;
+  background: rgba(255, 107, 157, 0.2);
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.3);
+}
+
+.nav-left a[href*="about.html"]::before {
+  width: 80%;
+}
+
+@media (max-width: 992px) {
+  .navbar { flex-wrap: wrap; justify-content: center; gap: 15px; }
+  .nav-left, .nav-right { flex: 1 1 100%; justify-content: center; gap: 15px; }
+  .logo-circle { width: 70px; height: 70px; }
+  .logo-circle span { font-size: 24px; }
+  .nav-left a, .nav-right a { padding: 8px 12px; font-size: 14px; }
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative; 
+  width: 100%; 
+  height: 70vh;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  background: url('gallery/img12.jpg') center/cover no-repeat;
+  border-radius: 0 0 30px 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+.hero::before { 
+  content: ""; 
+  position: absolute; 
+  top:0; 
+  left:0; 
+  right:0; 
+  bottom:0; 
+  background: linear-gradient(135deg, rgba(15, 12, 41, 0.7), rgba(48, 43, 99, 0.7)); 
+}
+.hero h2 { 
+  position: relative; 
+  color: #ffd1dc; 
+  font-size: 4.5rem; 
+  text-align: center; 
+  font-weight: 800;
+  text-shadow: 
+    0 0 20px rgba(255, 107, 157, 0.8),
+    0 0 40px rgba(123, 104, 238, 0.6);
+  padding: 20px 40px;
+  background: rgba(20, 15, 60, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+}
+
+/* ---------- SECTION STYLES ---------- */
+section {
+  width: 90%; 
+  max-width: 1200px; 
+  margin: 60px auto; 
+  padding: 40px;
+  background: linear-gradient(145deg, rgba(30, 25, 80, 0.8), rgba(40, 35, 90, 0.8));
+  border-radius: 25px; 
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee, #00ced1);
+}
+
+section h2 { 
+  color: #ffd1dc; 
+  margin-bottom: 30px; 
+  text-align: center; 
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+  position: relative;
+  padding-bottom: 15px;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 6px;
+  background: linear-gradient(90deg, #7b68ee, #00ced1);
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(123, 104, 238, 0.5);
+}
+
+section p { 
+  color: #d8c7ff; 
+  font-size: 1.2rem; 
+  line-height: 1.8; 
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+/* ---------- MEMBERS CARDS GRID ---------- */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.member-card-wrapper {
+  perspective: 1000px;
+  position: relative;
+}
+
+.member-card {
+  position: relative;
+  height: 420px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(20, 15, 60, 0.95);
+  border: 3px solid transparent;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-clip: padding-box;
+  transform-style: preserve-3d;
+}
+
+/* Electric Border with neon effect - KEPT YOUR AMAZING EFFECT! */
+.member-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    #FFA500,
+    #00FFFF,
+    #FF00FF,
+    #FFA500
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: 1;
+  pointer-events: none;
+  animation: electricBorder 3s linear infinite;
+  filter: drop-shadow(0 0 8px #00FFFF) drop-shadow(0 0 12px #FF00FF);
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes electricBorder {
+  0% {
+    --angle: 0deg;
+    filter: drop-shadow(0 0 8px #00FFFF) drop-shadow(0 0 12px #FF00FF);
+  }
+  25% {
+    filter: drop-shadow(0 0 10px #FF00FF) drop-shadow(0 0 15px #FFA500);
+  }
+  50% {
+    filter: drop-shadow(0 0 12px #FFA500) drop-shadow(0 0 18px #00FFFF);
+  }
+  75% {
+    filter: drop-shadow(0 0 10px #00FFFF) drop-shadow(0 0 15px #FF00FF);
+  }
+  100% {
+    --angle: 360deg;
+    filter: drop-shadow(0 0 8px #FF00FF) drop-shadow(0 0 12px #FFA500);
+  }
+}
+
+/* Neon glow effect under the card - KEPT YOUR EFFECT! */
+.member-card::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 10%;
+  width: 80%;
+  height: 30px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #00FFFF 20%,
+    #FF00FF 50%,
+    #00FFFF 80%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(15px);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+
+.member-card:hover::after {
+  opacity: 1;
+  transform: scale(1);
+  animation: neonPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+  0% {
+    filter: blur(15px) brightness(1);
+    box-shadow: 0 0 20px #00FFFF, 0 0 40px #FF00FF;
+  }
+  100% {
+    filter: blur(20px) brightness(1.5);
+    box-shadow: 0 0 30px #00FFFF, 0 0 60px #FF00FF, 0 0 80px #FFA500;
+  }
+}
+
+.member-card img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 22px 22px 0 0;
+  transition: transform 0.5s ease-in-out;
+  filter: brightness(0.9);
+}
+
+.member-card:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+.member-card-content {
+  height: 30%;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  background: rgba(15, 12, 41, 0.7);
+  backdrop-filter: blur(5px);
+  border-radius: 0 0 22px 22px;
+}
+
+.member-card-content h4 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffd1dc;
+  margin-bottom: 8px;
+  text-shadow: 0 0 12px rgba(255, 199, 115, 0.7);
+  transition: all 0.3s ease;
+}
+
+.member-card:hover .member-card-content h4 {
+  color: #ffffff;
+  text-shadow: 0 0 15px #00FFFF, 0 0 25px #FF00FF;
+  animation: textGlow 1.5s ease-in-out infinite alternate;
+}
+
+.member-card-content p {
+  font-size: 16px;
+  color: #b5e8ff;
+  text-shadow: 0 0 6px rgba(0, 208, 255, 0.5);
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.member-card:hover .member-card-content p {
+  color: #ffffff;
+  text-shadow: 0 0 10px #FF00FF, 0 0 15px #00FFFF;
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 15px #00FFFF, 0 0 25px #FF00FF;
+  }
+  100% {
+    text-shadow: 0 0 20px #FF00FF, 0 0 30px #FFA500, 0 0 40px #00FFFF;
+  }
+}
+
+.member-card-wrapper:hover .member-card {
+  transform: rotate3d(0.3, 1, 0, 8deg) translateY(-15px);
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.5),
+    0 0 40px rgba(0, 255, 255, 0.5),
+    0 0 60px rgba(255, 0, 255, 0.4);
+}
+
+/* Additional glow effect for the entire card on hover - KEPT YOUR EFFECT! */
+.member-card-wrapper:hover .member-card::before {
+  animation-duration: 1.5s;
+  filter: drop-shadow(0 0 15px #00FFFF) 
+         drop-shadow(0 0 25px #FF00FF)
+         drop-shadow(0 0 35px #FFA500);
+}
+
+/* ---------- FOOTER ---------- */
+footer { 
+  background: linear-gradient(to top, rgba(15, 12, 41, 0.95), rgba(30, 25, 80, 0.95));
+  text-align: center; 
+  padding: 50px 20px; 
+  color: #ffffff;
+  margin-top: 80px;
+  border-top: 1px solid rgba(255, 182, 193, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 107, 157, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(123, 104, 238, 0.1) 0%, transparent 30%);
+  z-index: -1;
+}
+
+footer p { 
+  margin-top: 15px; 
+  font-size: 1.2rem; 
+  color: #ffd1dc; 
+  font-weight: 600;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- DECORATIVE SECTION DIVIDERS ---------- */
+.section-divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 182, 193, 0.4), transparent);
+  margin: 40px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .members-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  
+  .member-card {
+    height: 380px;
+  }
+  
+  .member-card-content h4 {
+    font-size: 20px;
+  }
+  
+  .hero h2 {
+    font-size: 3rem;
+    padding: 15px 25px;
+  }
+  
+  section {
+    padding: 30px 20px;
+  }
+  
+  section h2 {
+    font-size: 2.2rem;
+  }
+  
+  section p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .members-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .hero {
+    height: 50vh;
+  }
+  
+  .hero h2 {
+    font-size: 2.2rem;
+    padding: 10px 20px;
+  }
+  
+  section h2 {
+    font-size: 1.8rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Cute Bubbles -->
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+     </div>
+     <div class="logo">
+     <div class="logo-circle">
+     <span>CIS</span>
+      </div>
+     </div>
+     <div class="nav-right">
+      <a href="events.html">Event</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="resourse.html">Resources</a>
+      <a href="contact.html">Contact</a>
+     </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <h2>About Us ✨</h2>
+</div>
+
+<!-- INTRODUCTION SECTION -->
+<section id="introduction">
+  <h2>Introduction</h2>
+  <p>The CIS Club is a hub for students passionate about computing and technology. We provide hands-on workshops, interactive sessions, and opportunities for skill development. Our goal is to inspire creativity, collaboration, and problem-solving through real-world projects and competitions. Members gain exposure to AI, programming, and emerging technologies while building leadership and teamwork skills.</p>
+</section>
+
+<!-- HISTORY SECTION -->
+<section id="history">
+  <h2>History</h2>
+  <p>Founded in 2023, the CIS Club has grown into a vibrant community of tech enthusiasts. Over the years, we have hosted annual project showcases, hackathons, and mentoring programs. Our alumni have gone on to excel in technology careers and contribute back to the club. Through consistent innovation, collaboration, and dedication, CIS Club has become a platform where ideas turn into tangible projects and lifelong connections are formed.</p>
+</section>
+
+<!-- MEMBERS SECTION -->
+<section id="members">
+  <h2>Our Amazing Team 🌟</h2>
+  <div class="members-grid">
+    <!-- All 30 Member Cards - KEPT YOUR AMAZING ELECTRIC BORDER CARDS! -->
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/sarwar.jpg" alt="sarwar">
+        <div class="member-card-content">
+          <h4>Md. Sarwar Hossain Mollah</h4>
+          <p>Advisor</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/mehedi.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Md. Mehedi Hassan</h4>
+          <p>Advisor</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/Israfil.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Mr. Israfil</h4>
+          <p>Convener</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/mabia.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Mabia Akonda Jemi</h4>
+          <p>President</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/pisah.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Ariful Haque Piash</h4>
+          <p>Vice-President</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/sinthi.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Shinthiah Islam Ritu</h4>
+          <p>Vice-President</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/delower.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Delover Hussain</h4>
+          <p>Vice-President</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/tamanna.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Tamanna Akter</h4>
+          <p>Co-Convener</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/jannatul_bony.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Jannatul Ferdous Bony</h4>
+          <p>Secretary of Public Relations</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/akash.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Jobied Chowdhury</h4>
+          <p>Organizing Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/atik.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Arafin Atik</h4>
+          <p>General Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/golam_rabbi.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Golam Rabbi</h4>
+          <p>Deputy Design Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/disha.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Sanjana Noor Disha</h4>
+          <p>Treasurer</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/fuad_fahim.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Md. Fuad Hasan Fahim</h4>
+          <p>Deputy Sports Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/jakaria_fahim.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Md. Jakarta Hossin Fahim</h4>
+          <p>Press Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/nafisa_nusrat.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Nafisa Tabassum Nusrat</h4>
+          <p>Deputy Design Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/masud.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Masudur Rahman</h4>
+          <p>Editor</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/nahian.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Samiul Hauque Ann Nahian</h4>
+          <p>Joint Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/nusrat.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Nusrat Jahan Jitu</h4>
+          <p>Deputy Organizing Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/pranto.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Md. Abdul Ahad Pranto</h4>
+          <p>Deputy Cultural Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/pallab.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Indrojit Sarkar Pallab</h4>
+          <p>Deputy Organizing Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/rayhan.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Md. Rayhan Parvaz</h4>
+          <p>Deputy Media Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/ruhit.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Md. MushfiquI Islam Ruhit</h4>
+          <p>Digital Content Manager</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/sajjad.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Sajjad Hossain</h4>
+          <p>Sports Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/sami.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Md. Samiul Islam</h4>
+          <p>Joint Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/samin_ur_rahman.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>T. M. Samin Ur Rahman</h4>
+          <p>Design Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/shehabul_alam.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Md. Shehabaul Alam</h4>
+          <p>Deputy Secretary of Public Relations</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/shimu.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Shumaiq Jaman Shimu</h4>
+          <p>Joint Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/tahsin.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>S.M. Tahsin Ul Karim</h4>
+          <p>Deputy Secretary of Public Relations</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/sithil.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>MD. Mahid Alam Marin</h4>
+          <p>Deputy Organizing Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/tasnim.jpg" alt="Md. MushfiquI Islam Ruhit">
+        <div class="member-card-content">
+          <h4>Tabassum Akter Tasnim</h4>
+          <p>Cultural Secretary</p>
+        </div>
+      </div>
+    </div>
+    <div class="member-card-wrapper">
+      <div class="member-card">
+        <img src="gallery/Pushpita.jpg" alt="Masudur Rahman">
+        <div class="member-card-content">
+          <h4>Pushpita Halder Isha</h4>
+          <p>Deputy Secretary of Public Relations</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 CIS Club. All Rights Reserved. 🦋</p>
+</footer>
+
+<script>
+// Add cute emoji to page title on focus
+const pageTitle = document.querySelector('title');
+const originalTitle = pageTitle.textContent;
+
+window.addEventListener('focus', () => {
+    pageTitle.textContent = originalTitle + ' ✨';
+});
+
+window.addEventListener('blur', () => {
+    pageTitle.textContent = originalTitle;
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>

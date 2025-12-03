@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIS Club — Join</title>
+<script src="app.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ---------- GLOBAL STYLES ---------- */
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: #0f0c29;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  color: #f0f0f0;
+  line-height: 1.7;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 105, 180, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 80% 70%, rgba(0, 191, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 40% 80%, rgba(147, 112, 219, 0.1) 0%, transparent 20%);
+  z-index: -1;
+}
+
+a { 
+  text-decoration: none; 
+  color: inherit; 
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(20, 15, 60, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 15px 30px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 30px;
+}
+
+.logo-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 8px 32px rgba(255, 107, 157, 0.4),
+    0 0 0 2px rgba(255, 182, 193, 0.5),
+    0 0 0 4px rgba(123, 104, 238, 0.3);
+  border: 2px solid #ffffff;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-circle::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.logo-circle:hover {
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 
+    0 12px 40px rgba(255, 107, 157, 0.6),
+    0 0 0 3px rgba(255, 182, 193, 0.7),
+    0 0 0 6px rgba(123, 104, 238, 0.4);
+}
+
+.logo-circle span {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+/* Navbar links */
+.nav-left a, .nav-right a {
+  color: #f0f0f0;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-left a::before, .nav-right a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.nav-left a:hover, .nav-right a:hover {
+  color: #ffd1dc;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.nav-left a:hover::before, .nav-right a:hover::before {
+  width: 80%;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 12px 20px;
+  }
+  .nav-left, .nav-right {
+    flex: 1 1 100%;
+    justify-content: center;
+    gap: 15px;
+  }
+  .logo-circle {
+    width: 70px;
+    height: 70px;
+  }
+  .logo-circle span {
+    font-size: 24px;
+  }
+  .nav-left a, .nav-right a {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+/* ---------- UPDATED BENEFITS SECTION ---------- */
+#benefits {
+  width: 90%;
+  max-width: 1400px;
+  margin: 4rem auto;
+  padding: 3rem;
+  border-radius: 24px;
+  background: rgba(30, 25, 80, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 182, 193, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+#benefits::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 107, 157, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(123, 104, 238, 0.1) 0%, transparent 30%);
+  z-index: -1;
+}
+
+#benefits h2 {
+  color: #ffd1dc;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+}
+
+#benefits h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 6px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee, #00ced1);
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+}
+
+#benefits p.intro {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 4rem;
+  color: #e0d1ff;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  border-left: 4px solid #ff6b9d;
+  border-right: 4px solid #7b68ee;
+}
+
+.benefits-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 2.5rem;
+}
+
+.benefit-card {
+  background: linear-gradient(145deg, rgba(40, 35, 90, 0.9), rgba(25, 20, 65, 0.9));
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  backdrop-filter: blur(5px);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+  background: linear-gradient(to bottom, #ff6b9d, #7b68ee, #00ced1);
+  transition: width 0.4s ease;
+}
+
+.benefit-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  transform: rotate(30deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.benefit-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(255, 107, 157, 0.3);
+  border-color: rgba(255, 182, 193, 0.6);
+}
+
+.benefit-card:hover::before {
+  width: 12px;
+}
+
+.benefit-card:hover::after {
+  opacity: 1;
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(30deg); }
+}
+
+.benefit-icon {
+  font-size: 3.2rem;
+  color: #ffd1dc;
+  margin-bottom: 1.8rem;
+  background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(123, 104, 238, 0.2));
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 182, 193, 0.5);
+  box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+  z-index: 2;
+}
+
+.benefit-card h3 {
+  color: #ffd1dc;
+  margin-bottom: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+.benefit-card p {
+  color: #d8c7ff;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+  z-index: 2;
+}
+
+.benefit-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: auto;
+  z-index: 2;
+}
+
+.benefit-tag {
+  background: linear-gradient(135deg, rgba(123, 104, 238, 0.3), rgba(0, 206, 209, 0.3));
+  color: #b5e8ff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(0, 206, 209, 0.4);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.benefit-tag:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, rgba(255, 107, 157, 0.4), rgba(123, 104, 238, 0.4));
+}
+
+/* ---------- FORM ---------- */
+#join-form {
+  width: 90%;
+  max-width: 1300px;
+  margin: 5rem auto;
+  padding: 3rem;
+  border-radius: 24px;
+  background: rgba(30, 25, 80, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 182, 193, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+#join-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 5% 15%, rgba(0, 206, 209, 0.1) 0%, transparent 25%),
+    radial-gradient(circle at 95% 85%, rgba(255, 107, 157, 0.1) 0%, transparent 25%);
+  z-index: -1;
+}
+
+#join-form h2 {
+  color: #ffd1dc;
+  margin-bottom: 2rem;
+  font-size: 2.8rem;
+  text-align: center;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+#join-form h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 5px;
+  background: linear-gradient(90deg, #7b68ee, #00ced1);
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(123, 104, 238, 0.5);
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: #ffd1dc;
+  font-size: 1.1rem;
+}
+
+.required::after {
+  content: " *";
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid rgba(255, 182, 193, 0.4);
+  border-radius: 14px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  background: rgba(20, 15, 60, 0.8);
+  color: #f0f0f0;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #7b68ee;
+  box-shadow: 
+    0 0 0 3px rgba(123, 104, 238, 0.3),
+    inset 0 2px 5px rgba(0, 0, 0, 0.2);
+  background: rgba(25, 20, 70, 0.9);
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+fieldset {
+  border: 1px solid rgba(255, 182, 193, 0.4);
+  border-radius: 14px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: rgba(20, 15, 60, 0.5);
+}
+
+legend {
+  font-weight: 700;
+  padding: 0 15px;
+  color: #b5e8ff;
+  font-size: 1.2rem;
+}
+
+.radio-group, .checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.radio-item, .checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.radio-item:hover, .checkbox-item:hover {
+  background: rgba(123, 104, 238, 0.2);
+  transform: translateY(-3px);
+}
+
+.radio-item input, .checkbox-item input {
+  width: auto;
+  accent-color: #7b68ee;
+}
+
+.buttons {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 16px 35px;
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+  justify-content: center;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.7s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+  color: white;
+  box-shadow: 0 8px 25px rgba(255, 107, 157, 0.5);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #7b68ee, #00ced1);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(123, 104, 238, 0.6);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 182, 193, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px) scale(1.05);
+  border-color: rgba(0, 206, 209, 0.6);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.error-msg {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 8px;
+  display: block;
+  font-weight: 500;
+}
+
+/* POPUP SUCCESS MESSAGE */
+.success-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(145deg, rgba(30, 25, 80, 0.95), rgba(40, 35, 90, 0.95));
+  color: white;
+  padding: 50px;
+  border-radius: 24px;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 182, 193, 0.3),
+    0 0 30px rgba(255, 107, 157, 0.4);
+  z-index: 9999;
+  text-align: center;
+  min-width: 380px;
+  max-width: 480px;
+  border: 2px solid rgba(255, 182, 193, 0.5);
+  display: none;
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.success-popup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee, #00ced1);
+}
+
+.success-popup i {
+  font-size: 80px;
+  color: #7b68ee;
+  margin-bottom: 25px;
+  text-shadow: 0 5px 15px rgba(123, 104, 238, 0.5);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.success-popup h3 {
+  font-size: 34px;
+  margin-bottom: 20px;
+  color: #ffd1dc;
+  font-weight: 800;
+}
+
+.success-popup p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: #d8c7ff;
+}
+
+.success-popup button {
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  border-radius: 14px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+}
+
+.success-popup button:hover {
+  background: linear-gradient(135deg, #7b68ee, #00ced1);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(123, 104, 238, 0.5);
+}
+
+/* Overlay for popup */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 12, 41, 0.9);
+  z-index: 9998;
+  display: none;
+}
+
+/* Animation for popup */
+@keyframes popIn {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5) rotate(-10deg); }
+  70% { opacity: 1; transform: translate(-50%, -50%) scale(1.05) rotate(5deg); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: linear-gradient(to top, rgba(15, 12, 41, 0.95), rgba(30, 25, 80, 0.95));
+  text-align: center;
+  padding: 50px 20px;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 182, 193, 0.3);
+  margin-top: 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 107, 157, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(123, 104, 238, 0.1) 0%, transparent 30%);
+  z-index: -1;
+}
+
+footer p {
+  color: #ffd1dc;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+}
+
+/* Decorative elements */
+.decorative-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 182, 193, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 182, 193, 0.8);
+}
+
+.dot:nth-child(1) { top: 10%; left: 5%; }
+.dot:nth-child(2) { top: 20%; right: 15%; }
+.dot:nth-child(3) { bottom: 30%; left: 20%; }
+.dot:nth-child(4) { bottom: 15%; right: 10%; }
+.dot:nth-child(5) { top: 40%; left: 10%; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .benefits-container, .form-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .benefit-card, #benefits, #join-form {
+    padding: 2rem;
+  }
+  
+  #benefits h2, #join-form h2 {
+    font-size: 2.2rem;
+  }
+  
+  .success-popup {
+    min-width: 300px;
+    padding: 30px;
+    width: 90%;
+  }
+  
+  .btn {
+    min-width: 160px;
+    padding: 14px 25px;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Decorative dots -->
+<div class="decorative-dots">
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
+
+<!-- ---------- NAVBAR ---------- -->
+<header>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+     </div>
+     <div class="logo">
+     <div class="logo-circle">
+     <span>CIS</span>
+      </div>
+     </div>
+     <div class="nav-right">
+      <a href="events.html">Event</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="resourse.html">Resources</a>
+      <a href="contact.html">Contact</a>
+     </div>
+  </nav>
+</header>
+
+<!-- ---------- UPDATED MEMBERSHIP BENEFITS ---------- -->
+<section id="benefits">
+  <h2>Membership Benefits ✨</h2>
+  <p class="intro">Join our vibrant community and unlock a world of exclusive opportunities designed to boost your tech career with a touch of creativity and fun!</p>
+  
+  <div class="benefits-container">
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <i class="fas fa-laptop-code"></i>
+      </div>
+      <h3>Exclusive Workshops & Events</h3>
+      <p>Get hands-on experience with cutting-edge technologies through our specialized workshops, tech talks, and industry events led by professionals from top tech companies.</p>
+      <div class="benefit-tags">
+        <span class="benefit-tag">Skill Development</span>
+        <span class="benefit-tag">Hands-on Learning</span>
+        <span class="benefit-tag">Creative Tech</span>
+      </div>
+    </div>
+    
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <i class="fas fa-network-wired"></i>
+      </div>
+      <h3>Professional Networking</h3>
+      <p>Connect with industry experts, successful alumni, and like-minded peers. Build relationships that can lead to internships, job referrals, and collaborative projects.</p>
+      <div class="benefit-tags">
+        <span class="benefit-tag">Industry Connections</span>
+        <span class="benefit-tag">Career Opportunities</span>
+        <span class="benefit-tag">Community</span>
+      </div>
+    </div>
+    
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <i class="fas fa-trophy"></i>
+      </div>
+      <h3>Competitions & Hackathons</h3>
+      <p>Participate in local and national hackathons, coding competitions, and innovation challenges with team support, mentorship, and potential prize money.</p>
+      <div class="benefit-tags">
+        <span class="benefit-tag">Competitive Experience</span>
+        <span class="benefit-tag">Project Portfolio</span>
+        <span class="benefit-tag">Prizes</span>
+      </div>
+    </div>
+    
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <i class="fas fa-certificate"></i>
+      </div>
+      <h3>Certification & Recognition</h3>
+      <p>Earn certificates for completed projects and workshops. Get recognized for your contributions through awards, featured spotlights, and leadership opportunities.</p>
+      <div class="benefit-tags">
+        <span class="benefit-tag">Credential Building</span>
+        <span class="benefit-tag">Leadership Development</span>
+        <span class="benefit-tag">Achievements</span>
+      </div>
+    </div>
+    
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <h3>Collaborative Projects</h3>
+      <p>Work on real-world projects with multidisciplinary teams. Gain experience in agile development, version control, and project management methodologies.</p>
+      <div class="benefit-tags">
+        <span class="benefit-tag">Team Experience</span>
+        <span class="benefit-tag">Real-world Projects</span>
+        <span class="benefit-tag">Collaboration</span>
+      </div>
+    </div>
+    
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <h3>Premium Learning Resources</h3>
+      <p>Access exclusive tutorials, software licenses, cloud credits, and learning platforms not available to general students. Stay ahead with curated tech resources.</p>
+      <div class="benefit-tags">
+        <span class="benefit-tag">Exclusive Access</span>
+        <span class="benefit-tag">Cutting-edge Tools</span>
+        <span class="benefit-tag">Learning Materials</span>
+      </div>
+    </div>
+    
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <i class="fas fa-briefcase"></i>
+      </div>
+      <h3>Career Development</h3>
+      <p>Receive personalized career guidance, resume reviews, mock interviews, and direct internship opportunities through our industry partnerships.</p>
+      <div class="benefit-tags">
+        <span class="benefit-tag">Internship Access</span>
+        <span class="benefit-tag">Career Preparation</span>
+        <span class="benefit-tag">Job Support</span>
+      </div>
+    </div>
+    
+    <div class="benefit-card">
+      <div class="benefit-icon">
+        <i class="fas fa-user-graduate"></i>
+      </div>
+      <h3>Faculty & Industry Mentorship</h3>
+      <p>Get paired with experienced faculty members and industry professionals who provide guidance, feedback, and support for your academic and career goals.</p>
+      <div class="benefit-tags">
+        <span class="benefit-tag">Personalized Guidance</span>
+        <span class="benefit-tag">Expert Feedback</span>
+        <span class="benefit-tag">Mentorship</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- JOIN FORM ---------- -->
+<section id="join-form">
+  <h2>Join Our Creative Community! 🎨</h2>
+  <form id="membershipForm" novalidate>
+    <div class="form-container">
+      <div class="form-column">
+        <div class="form-group">
+          <label for="name" class="required">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name here...">
+          <small class="error-msg" id="nameError"></small>
+        </div>
+        <div class="form-group">
+          <label for="email" class="required">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="your.email@example.com">
+          <small class="error-msg" id="emailError"></small>
+        </div>
+        <div class="form-group">
+          <label for="phone" class="required">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+          <small class="error-msg" id="phoneError"></small>
+        </div>
+        <div class="form-group">
+          <label for="dob" class="required">Date of Birth</label>
+          <input type="date" id="dob" name="dob">
+          <small class="error-msg" id="dobError"></small>
+        </div>
+        <div class="form-group">
+          <label for="studentId" class="required">Student ID</label>
+          <input type="text" id="studentId" name="studentId" placeholder="Your unique student ID">
+          <small class="error-msg" id="studentIdError"></small>
+        </div>
+      </div>
+
+      <div class="form-column">
+        <div class="form-group">
+          <label for="department" class="required">Department</label>
+          <select id="department" name="department">
+            <option value="">--Select Department--</option>
+            <option value="cs">Computer Science</option>
+            <option value="se">Software Engineering</option>
+            <option value="cis">Computer Information Systems</option>
+            <option value="it">Information Technology</option>
+            <option value="other">Other</option>
+          </select>
+          <small class="error-msg" id="departmentError"></small>
+        </div>
+        <div class="form-group">
+          <label for="academicYear" class="required">Academic Year</label>
+          <select id="academicYear" name="academicYear">
+            <option value="">--Select Year--</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+            <option value="grad">Graduate</option>
+          </select>
+          <small class="error-msg" id="academicYearError"></small>
+        </div>
+        <div class="form-group">
+          <label for="experience">Years of Technical Experience</label>
+          <input type="number" id="experience" name="experience" min="0" max="10" placeholder="0-10 years">
+          <small class="error-msg" id="experienceError"></small>
+        </div>
+
+        <fieldset>
+          <legend class="required">Gender</legend>
+          <div class="radio-group">
+            <div class="radio-item">
+              <input type="radio" id="male" name="gender" value="male">
+              <label for="male">Male</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="female" name="gender" value="female">
+              <label for="female">Female</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="other" name="gender" value="other">
+              <label for="other">Other</label>
+            </div>
+            <div class="radio-item">
+              <input type="radio" id="preferNot" name="gender" value="preferNot">
+              <label for="preferNot">Prefer not to say</label>
+            </div>
+          </div>
+          <small class="error-msg" id="genderError"></small>
+        </fieldset>
+      </div>
+
+      <div class="form-column">
+        <fieldset>
+          <legend class="required">Areas of Interest</legend>
+          <div class="checkbox-group">
+            <div class="checkbox-item"><input type="checkbox" id="programming" name="interest" value="programming"><label for="programming">Programming</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="aiInterest" name="interest" value="ai"><label for="aiInterest">Artificial Intelligence</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="webDev" name="interest" value="webDev"><label for="webDev">Web Development</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="dataScience" name="interest" value="dataScience"><label for="dataScience">Data Science</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="cybersecurity" name="interest" value="cybersecurity"><label for="cybersecurity">Cybersecurity</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="networking" name="interest" value="networking"><label for="networking">Networking</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="mobileDev" name="interest" value="mobileDev"><label for="mobileDev">Mobile Development</label></div>
+            <div class="checkbox-item"><input type="checkbox" id="iot" name="interest" value="iot"><label for="iot">Internet of Things</label></div>
+          </div>
+          <small class="error-msg" id="interestError"></small>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="skills">Technical Skills</label>
+          <textarea id="skills" name="skills" rows="3" placeholder="List your technical skills (e.g., Python, React, UI/UX Design)"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="expectations">What do you hope to gain from CIS Club?</label>
+          <textarea id="expectations" name="expectations" rows="3" placeholder="Your creative goals and expectations..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="referral">How did you hear about us?</label>
+          <select id="referral" name="referral">
+            <option value="">--Select Option--</option>
+            <option value="friend">Friend/Classmate</option>
+            <option value="faculty">Faculty Member</option>
+            <option value="poster">Poster/Flyer</option>
+            <option value="social">Social Media</option>
+            <option value="event">University Event</option>
+            <option value="website">University Website</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Application</button>
+      <button type="reset" class="btn btn-secondary"><i class="fas fa-redo"></i> Reset Form</button>
+    </div>
+  </form>
+</section>
+
+<!-- ---------- FOOTER ---------- -->
+<footer>
+  <p>&copy; 2025 CIS Club. All rights reserved. 🦋</p>
+</footer>
+
+<!-- POPUP SUCCESS MESSAGE -->
+<div class="overlay" id="overlay"></div>
+<div class="success-popup" id="successPopup">
+  <i class="fas fa-check-circle"></i>
+  <h3>Application Submitted! 🎉</h3>
+  <p>Thank you for joining our creative community! We'll contact you via email within 24-48 hours with more details.</p>
+  <button id="closePopup">OK</button>
+</div>
+
+<!-- ---------- SCRIPTS ---------- -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("membershipForm");
+    const successPopup = document.getElementById("successPopup");
+    const overlay = document.getElementById("overlay");
+    const closePopupBtn = document.getElementById("closePopup");
+
+    function validateRequired(field) {
+        const value = field.value.trim();
+        const errorElement = document.getElementById(field.id + 'Error');
+        if (value === '') {
+            errorElement.textContent = `${field.labels[0].textContent.replace(' *', '')} is required`;
+            field.style.borderColor = '#ff6b6b';
+            return false;
+        } else {
+            errorElement.textContent = '';
+            field.style.borderColor = 'rgba(255, 182, 193, 0.4)';
+            return true;
+        }
+    }
+
+    function validateEmail(field) {
+        const value = field.value.trim();
+        const errorElement = document.getElementById(field.id + 'Error');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (value === '') {
+            errorElement.textContent = 'Email is required';
+            field.style.borderColor = '#ff6b6b';
+            return false;
+        } else if (!emailRegex.test(value)) {
+            errorElement.textContent = 'Please enter a valid email address';
+            field.style.borderColor = '#ff6b6b';
+            return false;
+        } else {
+            errorElement.textContent = '';
+            field.style.borderColor = 'rgba(255, 182, 193, 0.4)';
+            return true;
+        }
+    }
+
+    function validateSelect(field) {
+        const value = field.value;
+        const errorElement = document.getElementById(field.id + 'Error');
+        if (value === '') {
+            errorElement.textContent = `${field.labels[0].textContent.replace(' *', '')} is required`;
+            field.style.borderColor = '#ff6b6b';
+            return false;
+        } else {
+            errorElement.textContent = '';
+            field.style.borderColor = 'rgba(255, 182, 193, 0.4)';
+            return true;
+        }
+    }
+
+    function validateRadio(name) {
+        const radios = document.querySelectorAll(`input[name="${name}"]`);
+        const errorElement = document.getElementById(name + 'Error');
+        let checked = false;
+        radios.forEach(r => { if (r.checked) checked = true; });
+        if (!checked) { errorElement.textContent = 'Please select a gender'; return false; }
+        else { errorElement.textContent = ''; return true; }
+    }
+
+    function validateCheckbox(name) {
+        const checkboxes = document.querySelectorAll(`input[name="${name}"]`);
+        const errorElement = document.getElementById(name + 'Error');
+        let checked = false;
+        checkboxes.forEach(c => { if (c.checked) checked = true; });
+        if (!checked) { errorElement.textContent = 'Please select at least one area of interest'; return false; }
+        else { errorElement.textContent = ''; return true; }
+    }
+
+    function validateNumber(field, min, max) {
+        const value = field.value;
+        const errorElement = document.getElementById(field.id + 'Error');
+        if (value === '') { errorElement.textContent = ''; field.style.borderColor = 'rgba(255, 182, 193, 0.4)'; return true; }
+        else if (isNaN(value) || value < min || value > max) {
+            errorElement.textContent = `Please enter a number between ${min} and ${max}`;
+            field.style.borderColor = '#ff6b6b';
+            return false;
+        } else { errorElement.textContent = ''; field.style.borderColor = 'rgba(255, 182, 193, 0.4)'; return true; }
+    }
+
+    const requiredFields = form.querySelectorAll('[required]');
+    requiredFields.forEach(field => {
+        field.addEventListener('blur', function() {
+            if (this.type === 'email') validateEmail(this);
+            else if (this.tagName === 'SELECT') validateSelect(this);
+            else validateRequired(this);
+        });
+    });
+
+    const experienceField = document.getElementById('experience');
+    experienceField.addEventListener('blur', function() { validateNumber(this, 0, 10); });
+
+    // Function to show popup success message
+    function showSuccessPopup() {
+        successPopup.style.display = 'block';
+        overlay.style.display = 'block';
+        
+        // Auto close after 5 seconds
+        setTimeout(() => {
+            hideSuccessPopup();
+        }, 5000);
+    }
+
+    // Function to hide popup
+    function hideSuccessPopup() {
+        successPopup.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+
+    // Close popup when clicking X button
+    closePopupBtn.addEventListener('click', hideSuccessPopup);
+    
+    // Close popup when clicking overlay
+    overlay.addEventListener('click', hideSuccessPopup);
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let valid = true;
+        
+        // Validate all required fields
+        if (!validateRequired(form.name)) valid = false;
+        if (!validateEmail(form.email)) valid = false;
+        if (!validateRequired(form.phone)) valid = false;
+        if (!validateRequired(form.dob)) valid = false;
+        if (!validateRequired(form.studentId)) valid = false;
+        if (!validateSelect(form.department)) valid = false;
+        if (!validateSelect(form.academicYear)) valid = false;
+        if (!validateRadio("gender")) valid = false;
+        if (!validateCheckbox("interest")) valid = false;
+        if (!validateNumber(form.experience, 0, 10)) valid = false;
+
+        if (valid) {
+            // Show popup message immediately
+            showSuccessPopup();
+            
+            // Reset form
+            form.reset();
+            
+            // Clear any error messages
+            form.querySelectorAll(".error-msg").forEach(e => e.textContent = "");
+            form.querySelectorAll("input, select, textarea").forEach(field => { 
+                field.style.borderColor = 'rgba(255, 182, 193, 0.4)'; 
+            });
+        }
+    });
+
+    form.addEventListener("reset", () => {
+        form.querySelectorAll(".error-msg").forEach(e => e.textContent = "");
+        form.querySelectorAll("input, select, textarea").forEach(field => { 
+            field.style.borderColor = 'rgba(255, 182, 193, 0.4)'; 
+        });
+    });
+    
+    // Add cute emoji to page title on focus
+    const pageTitle = document.querySelector('title');
+    const originalTitle = pageTitle.textContent;
+    
+    window.addEventListener('focus', () => {
+        pageTitle.textContent = originalTitle + ' ✨';
+    });
+    
+    window.addEventListener('blur', () => {
+        pageTitle.textContent = originalTitle;
+    });
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>

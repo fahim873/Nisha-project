@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIS Club — Home ✨</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ---------- GLOBAL STYLES ---------- */
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: #0f0c29;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  color: #f0f0f0;
+  line-height: 1.7;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 105, 180, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 80% 70%, rgba(0, 191, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 40% 80%, rgba(147, 112, 219, 0.1) 0%, transparent 20%);
+  z-index: -1;
+}
+
+a { 
+  text-decoration: none; 
+  color: inherit; 
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(20, 15, 60, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 15px 30px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 30px;
+}
+
+.logo-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 8px 32px rgba(255, 107, 157, 0.4),
+    0 0 0 2px rgba(255, 182, 193, 0.5),
+    0 0 0 4px rgba(123, 104, 238, 0.3);
+  border: 2px solid #ffffff;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-circle::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.logo-circle:hover {
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 
+    0 12px 40px rgba(255, 107, 157, 0.6),
+    0 0 0 3px rgba(255, 182, 193, 0.7),
+    0 0 0 6px rgba(123, 104, 238, 0.4);
+}
+
+.logo-circle span {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+/* Navbar links */
+.nav-left a, .nav-right a {
+  color: #f0f0f0;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-left a::before, .nav-right a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.nav-left a:hover, .nav-right a:hover {
+  color: #ffd1dc;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.nav-left a:hover::before, .nav-right a:hover::before {
+  width: 80%;
+}
+
+/* Active link */
+.nav-left a[href*="index.html"] {
+  color: #ffd1dc;
+  background: rgba(255, 107, 157, 0.2);
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.3);
+}
+
+.nav-left a[href*="index.html"]::before {
+  width: 80%;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 12px 20px;
+  }
+  .nav-left, .nav-right {
+    flex: 1 1 100%;
+    justify-content: center;
+    gap: 15px;
+  }
+  .logo-circle {
+    width: 70px;
+    height: 70px;
+  }
+  .logo-circle span {
+    font-size: 24px;
+  }
+  .nav-left a, .nav-right a {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+/* ---------- HERO / SLIDER ---------- */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  max-height: 700px;
+  overflow: hidden;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.hero .slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 1.5s ease-in-out;
+  transform: scale(1.05);
+  filter: brightness(0.7);
+}
+
+.hero .slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(15, 12, 41, 0.5), rgba(48, 43, 99, 0.5));
+  z-index: 1;
+}
+
+.hero .slide.active {
+  opacity: 1;
+  transform: scale(1);
+  filter: brightness(0.8);
+}
+
+/* Dots */
+.hero .dots {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.hero .dot {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: 0 8px;
+  background-color: rgba(255, 182, 193, 0.4);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.hero .dot.active {
+  background-color: #ff6b9d;
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.8);
+  border-color: #ffd1dc;
+}
+
+.hero .dot:hover {
+  background-color: #7b68ee;
+  transform: scale(1.3);
+  box-shadow: 0 0 20px rgba(123, 104, 238, 0.8);
+}
+
+/* Hero CTA Buttons */
+.hero-cta {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.hero-cta .btn-primary,
+.hero-cta .btn-outline {
+  padding: 18px 40px;
+  border-radius: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1.1rem;
+  border: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-cta .btn-primary::before,
+.hero-cta .btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.7s;
+}
+
+.hero-cta .btn-primary:hover::before,
+.hero-cta .btn-outline:hover::before {
+  left: 100%;
+}
+
+.hero-cta .btn-primary {
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(255, 107, 157, 0.5);
+}
+
+.hero-cta .btn-primary:hover {
+  background: linear-gradient(135deg, #7b68ee, #00ced1);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(123, 104, 238, 0.7);
+}
+
+.hero-cta .btn-outline {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 182, 193, 0.6);
+  color: #ffd1dc;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero-cta .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px) scale(1.05);
+  border-color: rgba(0, 206, 209, 0.8);
+  box-shadow: 0 15px 40px rgba(0, 206, 209, 0.4);
+}
+
+/* Hero text overlay */
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  width: 90%;
+  max-width: 900px;
+}
+
+.hero-text h1 {
+  font-size: 4rem;
+  color: #ffd1dc;
+  margin-bottom: 20px;
+  text-shadow: 
+    0 0 20px rgba(255, 107, 157, 0.8),
+    0 0 40px rgba(123, 104, 238, 0.6);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.hero-text p {
+  font-size: 1.3rem;
+  color: #d8c7ff;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+/* ---------- WELCOME ---------- */
+.welcome {
+  text-align: center;
+  padding: 80px 20px 40px;
+  position: relative;
+}
+
+.welcome::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 5px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee, #00ced1);
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.6);
+}
+
+.welcome h2 {
+  font-size: 3.5rem;
+  color: #ffd1dc;
+  margin-bottom: 30px;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+  position: relative;
+  display: inline-block;
+}
+
+.welcome h2::after {
+  content: '✨';
+  position: absolute;
+  right: -50px;
+  top: 0;
+  font-size: 2rem;
+  animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.welcome p {
+  font-size: 1.3rem;
+  color: #d8c7ff;
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 1.8;
+  background: rgba(30, 25, 80, 0.5);
+  padding: 30px;
+  border-radius: 20px;
+  border-left: 5px solid #ff6b9d;
+  border-right: 5px solid #7b68ee;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- OUR MOTIVES ---------- */
+.motives-title {
+  text-align: center;
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #ffd1dc;
+  margin-top: 60px;
+  text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.motives-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 6px;
+  background: linear-gradient(90deg, #7b68ee, #00ced1);
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(123, 104, 238, 0.5);
+}
+
+.motives {
+  width: 90%;
+  max-width: 1400px;
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
+  padding: 20px;
+}
+
+.motive-card {
+  background: linear-gradient(145deg, rgba(40, 35, 90, 0.9), rgba(25, 20, 65, 0.9));
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.motive-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+  background: linear-gradient(to bottom, #ff6b9d, #7b68ee, #00ced1);
+  transition: width 0.4s ease;
+}
+
+.motive-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  transform: rotate(30deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.motive-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(255, 107, 157, 0.3);
+  border-color: rgba(255, 182, 193, 0.6);
+}
+
+.motive-card:hover::before {
+  width: 12px;
+}
+
+.motive-card:hover::after {
+  opacity: 1;
+  animation: shimmer 2s infinite linear;
+}
+
+.motive-card h3 {
+  color: #ffd1dc;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.motive-card h3::before {
+  font-size: 2rem;
+}
+
+.motive-card:nth-child(1) h3::before { content: '💡'; }
+.motive-card:nth-child(2) h3::before { content: '🤝'; }
+.motive-card:nth-child(3) h3::before { content: '🎯'; }
+.motive-card:nth-child(4) h3::before { content: '🌐'; }
+
+.motive-card p {
+  color: #d8c7ff;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  flex-grow: 1;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- FEATURED EVENT ---------- */
+.featured-event {
+  width: 90%;
+  max-width: 1200px;
+  margin: 80px auto;
+  background: linear-gradient(145deg, rgba(30, 25, 80, 0.8), rgba(40, 35, 90, 0.8));
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-event::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee, #00ced1);
+}
+
+.featured-event h2 {
+  color: #ffd1dc;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+}
+
+.featured-event p {
+  color: #d8c7ff;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.7;
+  max-width: 900px;
+}
+
+.featured-event .event-buttons {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.featured-event .join-btn,
+.featured-event .go-btn {
+  flex: 1;
+  min-width: 200px;
+  padding: 18px 35px;
+  border-radius: 16px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-event .join-btn::before,
+.featured-event .go-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.7s;
+}
+
+.featured-event .join-btn:hover::before,
+.featured-event .go-btn:hover::before {
+  left: 100%;
+}
+
+.featured-event .join-btn {
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(255, 107, 157, 0.5);
+}
+
+.featured-event .join-btn:hover {
+  background: linear-gradient(135deg, #7b68ee, #00ced1);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(123, 104, 238, 0.7);
+}
+
+.featured-event .go-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 182, 193, 0.6);
+  color: #ffd1dc;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.featured-event .go-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px) scale(1.05);
+  border-color: rgba(0, 206, 209, 0.8);
+  box-shadow: 0 15px 40px rgba(0, 206, 209, 0.4);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: linear-gradient(to top, rgba(15, 12, 41, 0.95), rgba(30, 25, 80, 0.95));
+  text-align: center;
+  padding: 60px 20px;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 182, 193, 0.3);
+  margin-top: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 107, 157, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(123, 104, 238, 0.1) 0%, transparent 30%);
+  z-index: -1;
+}
+
+footer p {
+  color: #ffd1dc;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- LOGIN MODAL ---------- */
+.modal {
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(15, 12, 41, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  display: none;
+}
+
+.modal-content {
+  background: linear-gradient(145deg, rgba(30, 25, 80, 0.95), rgba(40, 35, 90, 0.95));
+  border: 1px solid rgba(255, 182, 193, 0.4);
+  border-radius: 25px;
+  padding: 50px 40px;
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 182, 193, 0.2);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee, #00ced1);
+}
+
+.modal-content h2 {
+  color: #ffd1dc;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+  font-weight: 800;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 18px 20px;
+  margin: 15px 0;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 182, 193, 0.4);
+  background: rgba(20, 15, 60, 0.8);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content input:focus {
+  outline: none;
+  border-color: #7b68ee;
+  box-shadow: 
+    0 0 0 3px rgba(123, 104, 238, 0.3),
+    inset 0 2px 5px rgba(0, 0, 0, 0.2);
+  background: rgba(25, 20, 70, 0.9);
+}
+
+.modal-content input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 18px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-content button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.7s;
+}
+
+.modal-content button:hover {
+  background: linear-gradient(135deg, #7b68ee, #00ced1);
+  box-shadow: 0 15px 40px rgba(123, 104, 238, 0.6);
+  transform: translateY(-3px);
+}
+
+.modal-content button:hover::before {
+  left: 100%;
+}
+
+.modal .close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffd1dc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.modal .close:hover {
+  color: #ff6b9d;
+  transform: rotate(90deg) scale(1.1);
+  background: rgba(255, 107, 157, 0.2);
+}
+
+/* Decorative elements */
+.decorative-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 182, 193, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
+  animation: float 8s infinite ease-in-out;
+}
+
+.dot:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.dot:nth-child(2) { top: 25%; right: 10%; animation-delay: 1s; }
+.dot:nth-child(3) { bottom: 35%; left: 15%; animation-delay: 2s; }
+.dot:nth-child(4) { bottom: 20%; right: 8%; animation-delay: 3s; }
+.dot:nth-child(5) { top: 45%; left: 12%; animation-delay: 4s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-25px) rotate(180deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-text p {
+    font-size: 1.1rem;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .hero-cta .btn-primary,
+  .hero-cta .btn-outline {
+    width: 90%;
+    max-width: 300px;
+    padding: 16px 30px;
+  }
+  
+  .welcome h2 {
+    font-size: 2.5rem;
+  }
+  
+  .welcome p {
+    font-size: 1.1rem;
+    padding: 20px;
+  }
+  
+  .motives-title {
+    font-size: 2.5rem;
+  }
+  
+  .motive-card {
+    padding: 25px 20px;
+  }
+  
+  .featured-event {
+    padding: 30px 20px;
+  }
+  
+  .featured-event h2 {
+    font-size: 2rem;
+  }
+  
+  .event-buttons {
+    flex-direction: column;
+  }
+  
+  .modal-content {
+    padding: 40px 25px;
+  }
+  
+  .modal-content h2 {
+    font-size: 2rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Decorative dots -->
+<div class="decorative-dots">
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
+
+<!-- ---------- HEADER / NAVBAR ---------- -->
+<header>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+     </div>
+     <div class="logo">
+     <div class="logo-circle">
+     <span>CIS</span>
+      </div>
+     </div>
+     <div class="nav-right">
+      <a href="events.html">Event</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="resourse.html">Resources</a>
+      <a href="contact.html">Contact</a>
+      <a href="#" id="loginBtn">Login</a>
+     </div>
+  </nav>
+</header>
+
+<!-- ---------- HERO SLIDER ---------- -->
+<div class="hero" id="hero">
+  <div class="slide active" style="background-image: url('gallery/home1.jpg')"></div>
+  <div class="slide" style="background-image: url('gallery/home2.jpg')"></div>
+  <div class="slide" style="background-image: url('gallery/home3.jpg')"></div>
+  
+  <div class="hero-text">
+    <h1>Welcome to CIS Club ✨</h1>
+    <p>Where creativity meets technology, and every idea has the space to grow. Join our vibrant community of innovators!</p>
+  </div>
+  
+  <div class="hero-cta">
+    <button class="btn-primary" onclick="location.href='join.html'">
+      <i class="fas fa-user-plus"></i> Become a Member
+    </button>
+    <button class="btn-outline" onclick="location.href='events.html'">
+      <i class="fas fa-calendar-alt"></i> Explore Events
+    </button>
+  </div>
+
+  <div class="dots">
+    <span class="dot active" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+  </div>
+</div>
+
+<!-- ---------- WELCOME ---------- -->
+<div class="welcome">
+  <h2>Welcome to CIS Club</h2>
+  <p>Welcome to the CIS Club! 🌟 We are thrilled to have you join our community of curious minds and passionate learners. Here, creativity meets technology, and every idea has a chance to grow. Together, we explore new innovations, tackle exciting challenges, and support each other in our learning journeys. Whether you are just starting out or are already an expert, there is a place for you here. Our club thrives on collaboration, inspiration, and the joy of discovery. Through projects, discussions, and events, we aim to foster growth, teamwork, and endless curiosity. You will find friendships, mentorship, and opportunities to shine. We believe that every member brings something unique and valuable to our community. So, get ready to learn, create, and make a meaningful impact — welcome to the CIS Club family!</p>
+</div>
+
+<!-- ---------- OUR MOTIVES ---------- -->
+<h1 class="motives-title">Our Motives ✨</h1>
+
+<div class="motives">
+  <div class="motive-card">
+    <h3>Innovation</h3>
+    <p>Innovation drives everything we do at the CIS Club. 💡 We encourage members to think creatively, experiment fearlessly, and explore new ideas in technology and computing. Every project is an opportunity to push boundaries and discover unique solutions. By embracing curiosity and imagination, we turn challenges into breakthroughs. Together, we foster a culture where innovation thrives and inspires everyone in our community.</p>
+  </div>
+  <div class="motive-card">
+    <h3>Collaboration</h3>
+    <p>Collaboration is at the heart of the CIS Club. 🤝 Here, members work together, sharing ideas and supporting each other's growth. Team projects, discussions, and brainstorming sessions help turn individual creativity into collective innovation. Everyone's voice is valued, and learning happens through mutual encouragement and teamwork. By collaborating, we achieve more, inspire one another, and build a stronger, vibrant community.</p>
+  </div>
+  <div class="motive-card">
+    <h3>Skill Development</h3>
+    <p>Skill development is a cornerstone of the CIS Club. 🎯 We provide opportunities for members to learn, practice, and master new technologies and tools. Through workshops, projects, and collaborative sessions, everyone can enhance their abilities and grow professionally. Mentorship and peer support help turn knowledge into practical skills. By continuously learning and improving, our members become confident, capable, and ready to tackle real-world challenges.</p>
+  </div>
+  <div class="motive-card">
+    <h3>Networking</h3>
+    <p>Networking is a key part of the CIS Club experience. 🌐 Members have the chance to connect with like-minded peers, mentors, and industry professionals. Through events, workshops, and collaborative projects, relationships are built that inspire growth and opportunities. Sharing knowledge and experiences helps everyone expand their horizons. By fostering meaningful connections, the club creates a supportive community that lasts beyond the campus.</p>
+  </div>
+</div>
+
+<!-- ---------- FEATURED EVENT ---------- -->
+<div class="featured-event">
+  <h2>🎉 Featured Event: AI Project Showcase 2025</h2>
+  <p>Explore workshops, coding challenges, project showcases, and network with technology experts. Join the CIS Club and unlock your growth!</p>
+  <div class="event-buttons">
+    <button class="join-btn" onclick="location.href='join.html'">
+      <i class="fas fa-user-plus"></i> Join Now
+    </button>
+    <button class="go-btn" onclick="location.href='events.html'">
+      <i class="fas fa-arrow-right"></i> Go to Event
+    </button>
+  </div>
+</div>
+
+<!-- ---------- FOOTER ---------- -->
+<footer>
+  <p>&copy; 2025 CIS Club. All rights reserved. 🦋</p>
+</footer>
+
+<!-- ---------- LOGIN MODAL ---------- -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Login to CIS Club</h2>
+    <form id="loginForm">
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      <button type="submit">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // -------- HERO SLIDER --------
+  const slides = document.querySelectorAll('.hero .slide');
+  const dots = document.querySelectorAll('.hero .dot');
+
+  // If there are no slides, stop here
+  if (!slides || slides.length === 0) return;
+
+  let current = 0;
+  let slideInterval = null;
+  const AUTO_DELAY = 4000; // 4 seconds
+
+  function showSlide(index) {
+    index = ((index % slides.length) + slides.length) % slides.length; // safe wrap
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
+    if (dots && dots.length === slides.length) {
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+    current = index;
+  }
+
+  function nextSlide() {
+    showSlide(current + 1);
+  }
+
+  function startInterval() {
+    stopInterval();
+    slideInterval = setInterval(nextSlide, AUTO_DELAY);
+  }
+
+  function stopInterval() {
+    if (slideInterval) {
+      clearInterval(slideInterval);
+      slideInterval = null;
+    }
+  }
+
+  function resetInterval() {
+    stopInterval();
+    startInterval();
+  }
+
+  // Make currentSlide available globally for your inline onclick attributes
+  window.currentSlide = function (index) {
+    showSlide(index);
+    resetInterval();
+  };
+
+  // Add click listeners to dots if present (so both inline and JS clicks work)
+  if (dots && dots.length === slides.length) {
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.currentSlide(i);
+      });
+    });
+  }
+
+  // Initialize
+  showSlide(0);
+  startInterval();
+
+  // Pause on mouseenter, resume on mouseleave
+  const heroEl = document.getElementById('hero');
+  if (heroEl) {
+    heroEl.addEventListener('mouseenter', stopInterval);
+    heroEl.addEventListener('mouseleave', startInterval);
+  }
+
+  // -------- LOGIN MODAL --------
+  const modal = document.getElementById('loginModal');
+  const loginBtn = document.getElementById('loginBtn');
+  const closeBtn = modal ? modal.querySelector('.close') : null;
+  const loginForm = document.getElementById('loginForm');
+
+  if (loginBtn && modal) {
+    loginBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      modal.style.display = 'flex';
+      // Set focus to first input
+      const firstInput = modal.querySelector('input');
+      if (firstInput) firstInput.focus();
+    });
+  }
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', function () {
+      modal.style.display = 'none';
+    });
+  }
+
+  // Close when clicking outside modal content
+  window.addEventListener('click', function (event) {
+    if (!modal) return;
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  // Close on Escape key
+  window.addEventListener('keydown', function (event) {
+    if (!modal) return;
+    if (event.key === 'Escape' || event.key === 'Esc') {
+      if (modal.style.display === 'flex') modal.style.display = 'none';
+    }
+  });
+
+  // Login form submit
+  if (loginForm) {
+    loginForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Add cute success effect
+      const submitBtn = this.querySelector('button');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-check"></i> Welcome!';
+      submitBtn.style.background = 'linear-gradient(135deg, #4CAF50, #8BC34A)';
+      
+      setTimeout(() => {
+        modal.style.display = 'none';
+        submitBtn.innerHTML = originalText;
+        submitBtn.style.background = 'linear-gradient(135deg, #ff6b9d, #7b68ee)';
+      }, 1500);
+    });
+  }
+  
+  // Add cute emoji to page title on focus
+  const pageTitle = document.querySelector('title');
+  const originalTitle = pageTitle.textContent;
+  
+  window.addEventListener('focus', () => {
+    pageTitle.textContent = originalTitle + ' ✨';
+  });
+  
+  window.addEventListener('blur', () => {
+    pageTitle.textContent = originalTitle;
+  });
+  
+  // Add hover animation to motive cards
+  const motiveCards = document.querySelectorAll('.motive-card');
+  motiveCards.forEach((card, index) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    
+    setTimeout(() => {
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, 300 + (index * 200));
+  });
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIS Club — Events 🎉</title>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+/* ---------- GLOBAL STYLES ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  font-family: 'Poppins', 'Segoe UI', sans-serif; 
+  background: #0f0c29;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  color: #f0f0f0; 
+  line-height: 1.6; 
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 105, 180, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 80% 70%, rgba(0, 191, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 40% 80%, rgba(147, 112, 219, 0.1) 0%, transparent 20%);
+  z-index: -1;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ---------- CUTE BUBBLES ---------- */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 182, 193, 0.15);
+  backdrop-filter: blur(5px);
+  z-index: -1;
+  animation: float 15s infinite ease-in-out;
+}
+
+.bubble:nth-child(1) {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+  background: radial-gradient(circle, rgba(255, 107, 157, 0.2), transparent 70%);
+  border: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+.bubble:nth-child(2) {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  right: 8%;
+  animation-delay: 2s;
+  background: radial-gradient(circle, rgba(123, 104, 238, 0.2), transparent 70%);
+  border: 2px solid rgba(123, 104, 238, 0.3);
+}
+
+.bubble:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  bottom: 15%;
+  left: 10%;
+  animation-delay: 4s;
+  background: radial-gradient(circle, rgba(0, 206, 209, 0.2), transparent 70%);
+  border: 2px solid rgba(0, 206, 209, 0.3);
+}
+
+.bubble:nth-child(4) {
+  width: 60px;
+  height: 60px;
+  bottom: 25%;
+  right: 15%;
+  animation-delay: 6s;
+  background: radial-gradient(circle, rgba(255, 107, 157, 0.2), transparent 70%);
+  border: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+.bubble:nth-child(5) {
+  width: 90px;
+  height: 90px;
+  top: 60%;
+  left: 80%;
+  animation-delay: 8s;
+  background: radial-gradient(circle, rgba(123, 104, 238, 0.2), transparent 70%);
+  border: 2px solid rgba(123, 104, 238, 0.3);
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg) scale(1);
+    box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2);
+  }
+  25% { 
+    transform: translateY(-20px) rotate(5deg) scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 182, 193, 0.3);
+  }
+  50% { 
+    transform: translateY(10px) rotate(-5deg) scale(0.95);
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.1);
+  }
+  75% { 
+    transform: translateY(-10px) rotate(3deg) scale(1.02);
+    box-shadow: 0 12px 25px rgba(255, 182, 193, 0.25);
+  }
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar { 
+  position: sticky; 
+  top:0; 
+  left:0; 
+  width:100%; 
+  display:flex; 
+  justify-content:center; 
+  align-items:center; 
+  background: rgba(20, 15, 60, 0.85); 
+  backdrop-filter: blur(12px); 
+  padding: 15px 30px; 
+  z-index:1000; 
+  border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.nav-left, .nav-right { display:flex; align-items:center; gap:25px; }
+.logo { display:flex; align-items:center; justify-content:center; margin: 0 30px; }
+.logo-circle { 
+  width: 90px; 
+  height: 90px; 
+  border-radius:50%; 
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee); 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  box-shadow: 
+    0 8px 32px rgba(255, 107, 157, 0.4),
+    0 0 0 2px rgba(255, 182, 193, 0.5),
+    0 0 0 4px rgba(123, 104, 238, 0.3);
+  border:2px solid #ffffff; 
+  transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-circle::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.logo-circle:hover { 
+  transform: scale(1.15) rotate(10deg); 
+  box-shadow: 
+    0 12px 40px rgba(255, 107, 157, 0.6),
+    0 0 0 3px rgba(255, 182, 193, 0.7),
+    0 0 0 6px rgba(123, 104, 238, 0.4);
+}
+
+.logo-circle span { 
+  color:#ffffff; 
+  font-weight:800; 
+  font-size:32px; 
+  letter-spacing:1px; 
+  text-align:center; 
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+.nav-left a, .nav-right a { 
+  color:#f0f0f0; 
+  font-weight:600; 
+  padding:10px 15px; 
+  border-radius: 12px;
+  transition: all 0.3s ease; 
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-left a::before, .nav-right a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.nav-left a:hover, .nav-right a:hover { 
+  color:#ffd1dc; 
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.nav-left a:hover::before, .nav-right a:hover::before {
+  width: 80%;
+}
+
+/* Active link */
+.nav-right a[href*="events.html"] {
+  color: #ffd1dc;
+  background: rgba(255, 107, 157, 0.2);
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.3);
+}
+
+.nav-right a[href*="events.html"]::before {
+  width: 80%;
+}
+
+@media(max-width:992px){ 
+  .navbar{flex-wrap:wrap;justify-content:center;gap:15px;} 
+  .nav-left,.nav-right{flex:1 1 100%;justify-content:center; gap: 15px;} 
+  .logo-circle{width:70px;height:70px;} 
+  .logo-circle span{font-size:24px;} 
+  .nav-left a, .nav-right a { padding: 8px 12px; font-size: 14px; }
+}
+
+/* ---------- PAGE TITLE ---------- */
+.page-title { 
+  text-align:center; 
+  padding: 60px 20px 40px; 
+  font-size:3.5rem; 
+  color:#ffd1dc; 
+  text-shadow: 
+    0 0 20px rgba(255, 107, 157, 0.7),
+    0 0 40px rgba(123, 104, 238, 0.5);
+  font-weight: 800;
+  position: relative;
+}
+
+.page-title::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 6px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee, #00ced1);
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.6);
+}
+
+/* ---------- UPCOMING & RECENT EVENTS ---------- */
+.events-section { 
+  max-width:1200px; 
+  margin:auto; 
+  padding:40px 20px; 
+}
+
+.events-section h2 { 
+  color:#ffd1dc; 
+  margin-bottom:30px; 
+  text-align:center; 
+  font-size: 2.5rem; 
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+}
+
+.upcoming-recent-container { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap:30px; 
+  margin-bottom:40px; 
+}
+
+@media(max-width:768px){ 
+  .upcoming-recent-container { grid-template-columns: 1fr; } 
+}
+
+.event-card { 
+  background: linear-gradient(145deg, rgba(40, 35, 90, 0.9), rgba(25, 20, 65, 0.9));
+  border-radius:20px; 
+  overflow:hidden; 
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  margin-bottom:25px; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  backdrop-filter: blur(5px);
+  position: relative;
+}
+
+.event-card:hover { 
+  transform: translateY(-10px) scale(1.02); 
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(255, 107, 157, 0.3);
+  border-color: rgba(255, 182, 193, 0.6);
+}
+
+.event-card img { 
+  width:100%; 
+  height:200px; 
+  object-fit:cover; 
+  transition: transform 0.5s ease;
+}
+
+.event-card:hover img {
+  transform: scale(1.05);
+}
+
+.event-card .content { 
+  padding:25px; 
+  text-align:center; 
+}
+
+.event-card h3 { 
+  margin-bottom:15px; 
+  color:#ffd1dc; 
+  font-size:1.4rem; 
+  font-weight: 600;
+}
+
+.event-card p { 
+  font-size:1rem; 
+  color: #d8c7ff;
+}
+
+.event-card button { 
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+  color:#fff; 
+  border:none; 
+  padding:12px 25px; 
+  border-radius:12px; 
+  cursor:pointer; 
+  transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  font-weight: 600; 
+  margin-top: 15px;
+  box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.event-card button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.7s;
+}
+
+.event-card button:hover { 
+  background: linear-gradient(135deg, #7b68ee, #00ced1);
+  transform: translateY(-3px) scale(1.05); 
+  box-shadow: 0 12px 25px rgba(123, 104, 238, 0.6);
+}
+
+.event-card button:hover::before {
+  left: 100%;
+}
+
+.description-box { 
+  display:none; 
+  padding:20px; 
+  margin-top:15px; 
+  background: rgba(30, 25, 80, 0.8); 
+  border-radius:12px; 
+  text-align:left; 
+  color:#d8c7ff; 
+  font-size:1rem; 
+  line-height: 1.6;
+  border-left: 4px solid #ff6b9d;
+  border-right: 4px solid #7b68ee;
+}
+
+/* ---------- 3D IMAGE CAROUSEL FOR EVENT HIGHLIGHTS ---------- */
+.event-highlights-carousel {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    background: linear-gradient(145deg, rgba(15, 12, 41, 0.9), rgba(30, 25, 80, 0.9));
+    margin: 60px auto;
+    border-radius: 25px;
+    box-shadow: 
+      0 25px 60px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.highlight-slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.highlight-slide .highlight-item {
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+    border: 3px solid rgba(255, 182, 193, 0.4);
+}
+
+.highlight-slide .highlight-item:nth-child(1),
+.highlight-slide .highlight-item:nth-child(2){
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgba(255, 107, 157, 0.6);
+}
+
+.highlight-slide .highlight-item:nth-child(3){
+    left: 50%;
+}
+.highlight-slide .highlight-item:nth-child(4){
+    left: calc(50% + 220px);
+}
+.highlight-slide .highlight-item:nth-child(5){
+    left: calc(50% + 440px);
+}
+.highlight-slide .highlight-item:nth-child(6){
+    left: calc(50% + 660px);
+}
+.highlight-slide .highlight-item:nth-child(7){
+    left: calc(50% + 880px);
+    opacity: 1;
+}
+
+/* Adjust for 7 images */
+.highlight-slide .highlight-item:nth-child(n + 8){
+    left: calc(50% + 1100px);
+    opacity: 0;
+}
+
+.highlight-item .highlight-content{
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 400px;
+    text-align: left;
+    color: #fff;
+    transform: translate(0, -50%);
+    font-family: 'Poppins', sans-serif;
+    display: none;
+    background: rgba(20, 15, 60, 0.85);
+    padding: 35px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 107, 157, 0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.highlight-slide .highlight-item:nth-child(2) .highlight-content{
+    display: block;
+}
+
+.highlight-content .highlight-name{
+    font-size: 42px;
+    text-transform: uppercase;
+    font-weight: 800;
+    opacity: 0;
+    animation: highlightAnimate 1s ease-in-out 1 forwards;
+    color: #ffd1dc;
+    text-shadow: 0 0 15px rgba(255, 107, 157, 0.7);
+    margin-bottom: 20px;
+}
+
+.highlight-content .highlight-des{
+    margin-top: 15px;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: highlightAnimate 1s ease-in-out 0.3s 1 forwards;
+    color: #d8c7ff;
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+
+.highlight-content button{
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: highlightAnimate 1s ease-in-out 0.6s 1 forwards;
+    background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+    color: white;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid rgba(255, 182, 193, 0.6);
+    box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-content button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.7s;
+}
+
+.highlight-content button:hover{
+    background: linear-gradient(135deg, #7b68ee, #00ced1);
+    transform: scale(1.08);
+    box-shadow: 0 15px 35px rgba(123, 104, 238, 0.6);
+    border-color: rgba(0, 206, 209, 0.8);
+}
+
+.highlight-content button:hover::before {
+  left: 100%;
+}
+
+@keyframes highlightAnimate {
+    from{
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+.highlight-buttons{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 40px;
+    z-index: 100;
+}
+
+.highlight-buttons button{
+    width: 70px;
+    height: 60px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    margin: 0 20px;
+    background: rgba(30, 25, 80, 0.8);
+    color: #ffd1dc;
+    font-size: 24px;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 3px solid rgba(255, 107, 157, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-buttons button:hover{
+    background: rgba(255, 107, 157, 0.3);
+    color: #ffffff;
+    transform: scale(1.15);
+    box-shadow: 0 12px 25px rgba(255, 107, 157, 0.6);
+    border-color: rgba(255, 182, 193, 0.8);
+}
+
+/* ---------- FILTER BUTTONS ---------- */
+.filter-container { 
+  text-align:center; 
+  margin:30px 0 50px; 
+}
+
+.filter-btn { 
+  background:rgba(30, 25, 80, 0.8); 
+  color:#ffd1dc; 
+  border:none; 
+  padding:14px 28px; 
+  margin:8px; 
+  cursor:pointer; 
+  border-radius:50px; 
+  transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  font-weight: 600; 
+  font-size: 1rem;
+  border: 2px solid rgba(255, 182, 193, 0.4);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.filter-btn:hover, .filter-btn.active { 
+  background:linear-gradient(135deg, #ff6b9d, #7b68ee); 
+  transform: translateY(-5px) scale(1.05); 
+  color: white;
+  box-shadow: 0 12px 25px rgba(255, 107, 157, 0.5);
+  border-color: transparent;
+}
+
+/* ---------- ALL EVENTS GRID AS 5x4 LAYOUT ---------- */
+.all-events-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, auto);
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+@media(max-width:1024px){
+  .all-events-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+}
+
+@media(max-width:768px){
+  .all-events-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  
+  .event-highlights-carousel {
+    height: 50vh;
+  }
+  
+  .highlight-slide .highlight-item {
+    width: 150px;
+    height: 225px;
+  }
+  
+  .highlight-slide .highlight-item:nth-child(3){
+    left: 40%;
+  }
+  .highlight-slide .highlight-item:nth-child(4){
+    left: calc(40% + 170px);
+  }
+  .highlight-slide .highlight-item:nth-child(5){
+    left: calc(40% + 340px);
+  }
+  .highlight-slide .highlight-item:nth-child(6){
+    left: calc(40% + 510px);
+  }
+  .highlight-slide .highlight-item:nth-child(7){
+    left: calc(40% + 680px);
+  }
+  
+  .highlight-item .highlight-content {
+    left: 50px;
+    width: 300px;
+    padding: 25px;
+  }
+  
+  .highlight-content .highlight-name {
+    font-size: 32px;
+  }
+  
+  .highlight-content .highlight-des {
+    font-size: 1.1rem;
+  }
+  
+  .highlight-buttons button {
+    width: 60px;
+    height: 55px;
+    font-size: 22px;
+    margin: 0 15px;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+    padding: 40px 20px 30px;
+  }
+}
+
+@media(max-width:480px){
+  .event-highlights-carousel {
+    height: 40vh;
+  }
+  
+  .highlight-slide .highlight-item {
+    width: 120px;
+    height: 180px;
+  }
+  
+  .highlight-item .highlight-content {
+    left: 20px;
+    width: 250px;
+    padding: 20px;
+  }
+  
+  .highlight-content .highlight-name {
+    font-size: 24px;
+  }
+  
+  .highlight-content .highlight-des {
+    font-size: 1rem;
+  }
+  
+  .highlight-buttons button {
+    width: 55px;
+    height: 50px;
+    font-size: 20px;
+    margin: 0 10px;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .filter-btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    margin: 5px;
+  }
+}
+
+footer { 
+  background: linear-gradient(to top, rgba(15, 12, 41, 0.95), rgba(30, 25, 80, 0.95));
+  text-align:center; 
+  padding:50px 20px; 
+  color:#ffffff; 
+  margin-top: 80px; 
+  border-top: 1px solid rgba(255, 182, 193, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 107, 157, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(123, 104, 238, 0.1) 0%, transparent 30%);
+  z-index: -1;
+}
+
+footer p { 
+  margin-top:15px; 
+  font-size:1.2rem; 
+  color:#ffd1dc; 
+  font-weight: 600;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+}
+</style>
+</head>
+<body>
+
+<!-- Cute Bubbles -->
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+
+<!-- ---------- NAVBAR ---------- -->
+<header>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+     </div>
+     <div class="logo">
+     <div class="logo-circle">
+     <span>CIS</span>
+      </div>
+     </div>
+     <div class="nav-right">
+      <a href="events.html">Event</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="resourse.html">Resources</a>
+      <a href="contact.html">Contact</a>
+     </div>
+  </nav>
+</header>
+
+<!-- ---------- PAGE TITLE ---------- -->
+<h1 class="page-title">Event Highlights 🎉</h1>
+
+<!-- ---------- UPCOMING & RECENT EVENTS ---------- -->
+<div class="events-section">
+  <div class="upcoming-recent-container">
+    <div>
+      <h2>Upcoming Events</h2>
+      <div class="event-card">
+        <img src="gallery/Language_Fest.jpg" alt="Event">
+        <div class="content">
+          <h3>National Language Fest 2025</h3>
+          <button onclick="toggleDescription(this)">See Description</button>
+          <div class="description-box">The Bangladesh Agricultural University Language Club (BAULC) presents a national-level Language & Cultural Festival on December 5th & 6th, 2025.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Recent Events</h2>
+      <div class="event-card">
+        <img src="gallery/AI_Fest.jpg" alt="Event">
+        <div class="content">
+          <h3>AI Fest</h3>
+          <button onclick="toggleDescription(this)">See Description</button>
+          <div class="description-box">This FSIT freshers' event offered coding contests in C programming and an AI project showcase with international expert interactions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- 3D IMAGE CAROUSEL FOR EVENT HIGHLIGHTS ---------- -->
+<div class="event-highlights-carousel">
+    <div class="highlight-slide">
+        <!-- Replace these image URLs with your event highlight images -->
+        <div class="highlight-item" style="background-image: url('gallery/1.jpg');">
+            <div class="highlight-content">
+                <div class="highlight-name">AI Fest 2024</div>
+                <div class="highlight-des">Innovative AI projects showcase with international experts and coding competitions</div>
+                <button>View Gallery</button>
+            </div>
+        </div>
+        <div class="highlight-item" style="background-image: url('gallery/2.jpg');">
+            <div class="highlight-content">
+                <div class="highlight-name">Programming Bootcamp</div>
+                <div class="highlight-des">Intensive hands-on training in C programming and web development</div>
+                <button>See Details</button>
+            </div>
+        </div>
+        <div class="highlight-item" style="background-image: url('gallery/3.jpg');">
+            <div class="highlight-content">
+                <div class="highlight-name">Career Seminars</div>
+                <div class="highlight-des">Expert insights on higher studies and career opportunities worldwide</div>
+                <button>Learn More</button>
+            </div>
+        </div>
+        <div class="highlight-item" style="background-image: url('gallery/4.jpg');">
+            <div class="highlight-content">
+                <div class="highlight-name">Sports Tournaments</div>
+                <div class="highlight-des">CIS Premier League & Futsal tournaments promoting teamwork</div>
+                <button>View Matches</button>
+            </div>
+        </div>
+        <div class="highlight-item" style="background-image: url('gallery/5.jpg');">
+            <div class="highlight-content">
+                <div class="highlight-name">Cultural Events</div>
+                <div class="highlight-des">Winter festivals and cultural celebrations with massive participation</div>
+                <button>Explore</button>
+            </div>
+        </div>
+        <div class="highlight-item" style="background-image: url('gallery/6.jpg');">
+            <div class="highlight-content">
+                <div class="highlight-name">Orientation Programs</div>
+                <div class="highlight-des">Welcome events for new students with department introduction</div>
+                <button>Join Now</button>
+            </div>
+        </div>
+        <div class="highlight-item" style="background-image: url('gallery/7.jpg');">
+            <div class="highlight-content">
+                <div class="highlight-name">Alumni Meets</div>
+                <div class="highlight-des">Networking sessions with successful alumni and industry professionals</div>
+                <button>Connect</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight-buttons">
+        <button class="highlight-prev"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="highlight-next"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+</div>
+
+<!-- ---------- ALL EVENTS GRID ---------- -->
+<div class="events-section">
+  <h2>All Events ✨</h2>
+  <div class="filter-container">
+    <button class="filter-btn active" data-category="all">All</button>
+    <button class="filter-btn" data-category="seminar">Seminar</button>
+    <button class="filter-btn" data-category="bootcamp">Bootcamp</button>
+    <button class="filter-btn" data-category="campaign">Campaign</button>
+    <button class="filter-btn" data-category="competition">Competition</button>
+    <button class="filter-btn" data-category="fest">Fest</button>
+  </div>
+
+  <div class="all-events-grid">
+    <!-- Example Event Cards -->
+    <div class="event-card" data-category="seminar">
+      <img src="gallery/Career_seminar.jpg" alt="Event">
+      <div class="content">
+        <h3>Seminar on Career & Higher Study in USA</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">A special seminar on career and higher study opportunities in the USA, featuring Moonmoon Khanam, a Graduate Teaching Assistant at Auburn University at Montgomery. Organized by the CIS Project Based Learning initiative, this session provided firsthand insights into graduate studies, career pathways, and the US education system.</div>
+      </div>
+    </div>
+    
+    <div class="event-card" data-category="bootcamp">
+      <img src="gallery/C_bootcamp.jpg" alt="Event">
+      <div class="content">
+        <h3>Fun With Code - C Programming Bootcamp</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">A two-day, hands-on C Programming Bootcamp organized by the DIU CIS Club, focusing on product-based learning. This intensive session provided practical programming skills and real-world application development, emphasizing hands-on experience from the ground up.</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-category="campaign">
+      <img src="gallery/Club_Enrollement_Campaign.jpg" alt="Event">
+      <div class="content">
+        <h3>DIU Club Enrollment Campaign</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">A two-day official club membership and recruitment drive, coordinated by the Student Affairs office. Held at the Student Lounge in Knowledge Tower, this campaign provides students with a centralized process to enroll in various university clubs and student organizations for the academic year.</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-category="competition">
+      <img src="gallery/CIS_premier_league.jpg" alt="Event">
+      <div class="content">
+        <h3>CIS Premier League Season 5 - Departmental Tournament 2025</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">The 5th season of the prestigious CIS C&S Cricket Premier League, organized by the DIU CIS Club. This major departmental cricket tournament brings together students for a day of competitive sports at the DIU Central Field, continuing a long-standing annual tradition.</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-category="fest">
+      <img src="gallery/AI_Fest.jpg" alt="Event">
+      <div class="content">
+        <h3>AI Fest</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">This FSIT freshers' event offers coding contests in C programming and an AI project showcase with international expert interactions. Students can participate in technical challenges and present AI innovations to industry professionals.</div>
+      </div>
+    </div>
+    
+    <div class="event-card" data-category="seminar">
+      <img src="gallery/Web_seminar_python_django.jpg" alt="Event">
+      <div class="content">
+        <h3>Web Application Development Using Django with Python</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">A technical workshop on full-stack web development using Python and Django framework, conducted by BM Nazmul Haque from Daffodil International Academy. This 1.5-hour session provided hands-on training in building web applications using Django's powerful backend capabilities.</div>
+      </div>
+    </div>
+    
+    <div class="event-card" data-category="bootcamp">
+      <img src="gallery/Fun_with_Code_Bootcamp.jpg" alt="Event">
+      <div class="content">
+        <h3>Fun with Code Bootcamp</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">A full-day intensive workshop on full-stack web development, focusing on project-based learning with Django (Python) and PHP. Participants gained hands-on experience in backend development, working in local development environments to build real-world applications through 7.5 hours of comprehensive, practical training.</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-category="seminar">
+      <img src="gallery/Chatgpt_Bootcamp.jpg" alt="Event">
+      <div class="content">
+        <h3>ChatGPT Bootcamp</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">A three-day intensive bootcamp focused on using ChatGPT to learn programming fundamentals. </div>
+      </div>
+    </div>
+
+    <div class="event-card" data-category="competition">
+      <img src="gallery/CIS_Futsal.jpg" alt="Event">
+      <div class="content">
+        <h3>DIU CIS Futsal Tournament</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">This is the official promotional poster for the CIS Futsal Tournament 2025, organized by the Computer and Information Science (CIS) Club of Daffodil International University (DIU). The tournament will be held from February 11th to 13th, 2025, starting at 10:00 AM each day at the DIU Futsal Field.</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-category="fest">
+      <img src="gallery/Language_Fest.jpg" alt="Event">
+      <div class="content">
+        <h3>National Language Fest 2025</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">The Bangladesh Agricultural University Language Club (BAULC) presents a national-level Language & Cultural Festival on December 5th & 6th, 2025. Featuring 10 competitions, expert sessions, and a 40,000 BDT prize pool. Register for Competition, Session, or Combo packages.</div>
+      </div>
+    </div>
+    
+    <div class="event-card" data-category="seminar">
+      <img src="gallery/Data_Science_Summit.jpg" alt="Event">
+      <div class="content">
+        <h3>4th DU Data Science Summit in Education</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">Join the 4th annual Data Science Summit in Education for a day of hands-on learning and competition. Compete in the Data Hackathon, master new skills in workshops, and network with industry leaders. December 11, 2024, at Daffodil Smart City.</div>
+      </div>
+    </div>
+    
+    <div class="event-card" data-category="seminar">
+      <img src="gallery/Telimedicine Seminar.jpg" alt="Event">
+      <div class="content">
+        <h3>Building a Scalable Tech Platform</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">A seminar on "Building a Highly Scalable Technology Platform," using the DocTime Telemedicine App as a real-world case study. Featuring Mr. Anowar Hossain, CEO & Founder of DocTime, sharing insights on scalable tech infrastructure. Hosted by Daffodil University on March 31st, 2021.</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-category="seminar">
+      <img src="gallery/Programming_Seminar.jpg" alt="Event">
+      <div class="content">
+        <h3>You Can Start From Anywhere</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">This session, led by Motiullah Sajit, offered CIS students insights on career beginnings and growth. Hosted by Daffodil University, it emphasized that one's starting point doesn't define their destination, providing valuable perspective for aspiring tech professionals.</div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="gallery/Orientation_Summer_2025.jpg" alt="Event">
+      <div class="content">
+        <h3>Summer Orientation 2025</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">It is organized by the CIS Club, which adds a student-life and peer-engagement dimension. This suggests the event will also cover extracurricular opportunities, networking, and community building within the department.</div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="gallery/Orientation_Fall_2025.jpg" alt="Event">
+      <div class="content">
+        <h3>Fall Orientation 2025</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">It is organized by the CIS Club, which adds a student-life and peer-engagement dimension. This suggests the event will also cover extracurricular opportunities, networking, and community building within the department.</div>
+      </div>
+    </div>
+    
+    <div class="event-card" data-category="seminar">
+      <img src="gallery/Meet_The_alumni.jpg" alt="Event">
+      <div class="content">
+        <h3>Meet the Alumni</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">This is a networking session combined with a social Iftar dinner, organized to strengthen the bonds between current students and alumni within the CIS community.</div>
+      </div>
+    </div>
+    
+    <div class="event-card" data-category="seminar">
+      <img src="gallery/IoT_seminar.jpg" alt="Event">
+      <div class="content">
+        <h3>IOT Seminar</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">An open dialogue exploring the role of Artificial Intelligence in the Internet of Things (IoT) and Integrated Sensing and Communications (ISAC). The session was led by Md. Sarwar Hossain Mollah, Head of the Department of Computing and Information System, and held virtually on September 18, 2021.</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-category="campaign">
+      <img src="gallery/Coding_bootcamp.jpg" alt="Event">
+      <div class="content">
+        <h3>Object-Oriented Programming Bootcamp</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">A three-day intensive programming bootcamp covering both C and Java languages. Participants learned core programming concepts including variables, arrays, control structures (for, if), and object-oriented principles (classes, objects) through hands-on coding sessions.</div>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <img src="gallery/Him_Utsob.jpg" alt="Event">
+      <div class="content">
+        <h3>হিম উৎসব</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">A large-scale Winter Cultural Festival (Him Utsob) organized by the 23 CSA class of Daffodil International University. The event featured massive participation, with an extensive roster of over 800 students, highlighting a major class-led cultural celebration.</div>
+      </div>
+    </div>
+
+    <div class="event-card" data-category="seminar">
+      <img src="gallery/Higher_Study_Seminar.jpg" alt="Event">
+      <div class="content">
+        <h3>Career & Higher Study in USA</h3>
+        <button onclick="toggleDescription(this)">See Description</button>
+        <div class="description-box">An online seminar on "Career & Higher Study in the USA," providing valuable insights for students aspiring to pursue graduate education and build careers there. The session featured Mid Moin Kabir, a Graduate Research Assistant at Auburn University at Montgomery, who shared first-hand experience and guidance.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ---------- FOOTER ---------- -->
+<footer>
+  <p>&copy; 2025 CIS Club. All rights reserved. 🦋</p>
+</footer>
+
+<script>
+// ORIGINAL JAVASCRIPT - EXACTLY THE SAME
+function toggleDescription(btn){
+  const desc = btn.nextElementSibling;
+  desc.style.display = desc.style.display==="block" ? "none" : "block";
+}
+
+// Filter logic
+const filterBtns = document.querySelectorAll('.filter-btn');
+const eventCards = document.querySelectorAll('.all-events-grid .event-card');
+
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const category = btn.getAttribute('data-category');
+    eventCards.forEach(card=>{
+      card.style.display = (category==="all" || card.getAttribute('data-category')===category) ? "block" : "none";
+    });
+  });
+});
+
+// 3D Carousel functionality for Event Highlights
+let highlightNext = document.querySelector('.highlight-next');
+let highlightPrev = document.querySelector('.highlight-prev');
+let highlightAutoPlay;
+
+// Function to slide to next item
+function slideNext() {
+    let items = document.querySelectorAll('.highlight-item');
+    document.querySelector('.highlight-slide').appendChild(items[0]);
+}
+
+// Function to slide to previous item
+function slidePrev() {
+    let items = document.querySelectorAll('.highlight-item');
+    document.querySelector('.highlight-slide').prepend(items[items.length - 1]);
+}
+
+// Event listeners for manual controls
+highlightNext.addEventListener('click', slideNext);
+highlightPrev.addEventListener('click', slidePrev);
+
+// Start auto-slide with 4 second interval
+function startAutoSlide() {
+    highlightAutoPlay = setInterval(slideNext, 4000); // Changed to 4000ms (4 seconds)
+}
+
+// Pause auto-slide on hover
+document.querySelector('.event-highlights-carousel').addEventListener('mouseenter', () => {
+    clearInterval(highlightAutoPlay);
+});
+
+// Resume auto-slide when mouse leaves
+document.querySelector('.event-highlights-carousel').addEventListener('mouseleave', () => {
+    startAutoSlide();
+});
+
+// Initialize auto-slide
+startAutoSlide();
+
+// Optional: Add cute emoji to page title on focus
+const pageTitle = document.querySelector('title');
+const originalTitle = pageTitle.textContent;
+
+window.addEventListener('focus', () => {
+    pageTitle.textContent = originalTitle + ' ✨';
+});
+
+window.addEventListener('blur', () => {
+    pageTitle.textContent = originalTitle;
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIS Club — Contact ✉️</title>
+<script src="app.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ---------- GLOBAL STYLES ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: #0f0c29;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  color: #f0f0f0;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 105, 180, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 80% 70%, rgba(0, 191, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 40% 80%, rgba(147, 112, 219, 0.1) 0%, transparent 20%);
+  z-index: -1;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ---------- CUTE BUBBLES ---------- */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 182, 193, 0.15);
+  backdrop-filter: blur(5px);
+  z-index: -1;
+  animation: float 15s infinite ease-in-out;
+}
+
+.bubble:nth-child(1) {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+  background: radial-gradient(circle, rgba(255, 107, 157, 0.2), transparent 70%);
+  border: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+.bubble:nth-child(2) {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  right: 8%;
+  animation-delay: 2s;
+  background: radial-gradient(circle, rgba(123, 104, 238, 0.2), transparent 70%);
+  border: 2px solid rgba(123, 104, 238, 0.3);
+}
+
+.bubble:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  bottom: 15%;
+  left: 10%;
+  animation-delay: 4s;
+  background: radial-gradient(circle, rgba(0, 206, 209, 0.2), transparent 70%);
+  border: 2px solid rgba(0, 206, 209, 0.3);
+}
+
+.bubble:nth-child(4) {
+  width: 60px;
+  height: 60px;
+  bottom: 25%;
+  right: 15%;
+  animation-delay: 6s;
+  background: radial-gradient(circle, rgba(255, 107, 157, 0.2), transparent 70%);
+  border: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+.bubble:nth-child(5) {
+  width: 90px;
+  height: 90px;
+  top: 60%;
+  left: 80%;
+  animation-delay: 8s;
+  background: radial-gradient(circle, rgba(123, 104, 238, 0.2), transparent 70%);
+  border: 2px solid rgba(123, 104, 238, 0.3);
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg) scale(1);
+    box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2);
+  }
+  25% { 
+    transform: translateY(-20px) rotate(5deg) scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 182, 193, 0.3);
+  }
+  50% { 
+    transform: translateY(10px) rotate(-5deg) scale(0.95);
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.1);
+  }
+  75% { 
+    transform: translateY(-10px) rotate(3deg) scale(1.02);
+    box-shadow: 0 12px 25px rgba(255, 182, 193, 0.25);
+  }
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(20, 15, 60, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 15px 30px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+.nav-left, .nav-right { display: flex; align-items: center; gap: 25px; }
+.logo { display: flex; align-items: center; justify-content: center; margin: 0 30px; }
+.logo-circle {
+  width: 90px; height: 90px; border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 
+    0 8px 32px rgba(255, 107, 157, 0.4),
+    0 0 0 2px rgba(255, 182, 193, 0.5),
+    0 0 0 4px rgba(123, 104, 238, 0.3);
+  border: 2px solid #ffffff;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-circle::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.logo-circle:hover { 
+  transform: scale(1.15) rotate(10deg); 
+  box-shadow: 
+    0 12px 40px rgba(255, 107, 157, 0.6),
+    0 0 0 3px rgba(255, 182, 193, 0.7),
+    0 0 0 6px rgba(123, 104, 238, 0.4);
+}
+.logo-circle span { 
+  color: #ffffff; 
+  font-weight: 800; 
+  font-size: 32px; 
+  letter-spacing: 1px; 
+  text-align: center; 
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+.nav-left a, .nav-right a { 
+  color: #f0f0f0; 
+  font-weight: 600; 
+  padding: 10px 15px; 
+  border-radius: 12px;
+  transition: all 0.3s ease; 
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-left a::before, .nav-right a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.nav-left a:hover, .nav-right a:hover { 
+  color: #ffd1dc; 
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+.nav-left a:hover::before, .nav-right a:hover::before {
+  width: 80%;
+}
+
+/* Active link */
+.nav-right a[href*="contact.html"] {
+  color: #ffd1dc;
+  background: rgba(255, 107, 157, 0.2);
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.3);
+}
+
+.nav-right a[href*="contact.html"]::before {
+  width: 80%;
+}
+
+@media (max-width: 992px) {
+  .navbar { flex-wrap: wrap; justify-content: center; gap: 15px; }
+  .nav-left, .nav-right { flex: 1 1 100%; justify-content: center; gap: 15px; }
+  .logo-circle { width: 70px; height: 70px; }
+  .logo-circle span { font-size: 24px; }
+  .nav-left a, .nav-right a { padding: 8px 12px; font-size: 14px; }
+}
+
+/* ---------- CONTACT SECTION ---------- */
+.contact-section {
+  width: 90%; 
+  max-width: 1200px; 
+  margin: 3rem auto; 
+  padding: 3rem;
+  border-radius: 25px; 
+  background: linear-gradient(145deg, rgba(30, 25, 80, 0.8), rgba(40, 35, 90, 0.8));
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee, #00ced1);
+}
+
+.contact-section h2 { 
+  color: #ffd1dc; 
+  margin-bottom: 2.5rem; 
+  text-align: center; 
+  font-size: 3rem;
+  font-weight: 800;
+  position: relative;
+  padding-bottom: 20px;
+  text-shadow: 0 2px 10px rgba(255, 107, 157, 0.5);
+}
+.contact-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 6px;
+  background: linear-gradient(90deg, #ff6b9d, #7b68ee, #00ced1);
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.6);
+}
+
+/* ---------- CONTACT GRID ---------- */
+.contact-grid {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 3.5rem;
+}
+@media(max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+/* ---------- CONTACT INFO ---------- */
+.contact-info { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 1.5rem; 
+}
+.contact-info div {
+  display: flex; 
+  align-items: center; 
+  gap: 1.5rem; 
+  background: rgba(255, 255, 255, 0.08);
+  padding: 22px; 
+  border-radius: 16px; 
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-left: 6px solid #ff6b9d;
+  border-right: 2px solid #7b68ee;
+}
+.contact-info div:hover { 
+  background: rgba(255, 107, 157, 0.15); 
+  transform: translateX(8px) translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+}
+.contact-info i { 
+  color: #ffd1dc; 
+  font-size: 26px; 
+  width: 55px; 
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(123, 104, 238, 0.2));
+  border-radius: 50%;
+  border: 2px solid rgba(255, 182, 193, 0.5);
+  box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
+}
+
+/* ---------- SOCIAL ICONS ---------- */
+.social-icons { 
+  display: flex; 
+  justify-content: center; 
+  gap: 1.5rem; 
+  margin-top: 2rem;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 182, 193, 0.2);
+}
+.social-icons a {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Individual icon styles with gradients */
+.social-icons a.fb {
+  background: linear-gradient(135deg, #4267B2, #1a3b8b);
+  color: white;
+}
+.social-icons a.insta {
+  background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45);
+  color: white;
+}
+.social-icons a.wp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+}
+
+.social-icons a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.7s;
+}
+
+.social-icons a:hover {
+  transform: translateY(-8px) scale(1.15);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+
+.social-icons a:hover::before {
+  left: 100%;
+}
+
+.social-icons a:active {
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* ---------- LOCATION SECTION ---------- */
+.location-container {
+  margin-top: 2.5rem;
+}
+
+.location-container h3 {
+  color: #ffd1dc;
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  font-weight: 700;
+  text-shadow: 0 2px 5px rgba(255, 107, 157, 0.3);
+}
+
+.location-address {
+  color: #d8c7ff;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  padding: 15px;
+  background: rgba(30, 25, 80, 0.5);
+  border-radius: 12px;
+  border-left: 4px solid #7b68ee;
+  border-right: 4px solid #00ced1;
+  line-height: 1.7;
+}
+
+/* ---------- MAP ---------- */
+.map-container { 
+  width: 100%; 
+  height: 380px; 
+  border-radius: 16px; 
+  overflow: hidden; 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  border: 2px solid rgba(255, 182, 193, 0.4);
+  transition: all 0.3s ease;
+}
+
+.map-container:hover {
+  border-color: rgba(255, 182, 193, 0.7);
+  box-shadow: 0 15px 40px rgba(255, 107, 157, 0.3);
+}
+
+.map-container iframe { 
+  width: 100%; 
+  height: 100%; 
+  border: 0; 
+}
+
+/* ---------- CONTACT FORM ---------- */
+.contact-form { 
+  background: rgba(255, 255, 255, 0.05); 
+  padding: 30px; 
+  border-radius: 20px; 
+  border: 1px solid rgba(255, 182, 193, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.contact-form .form-group { 
+  position: relative; 
+  margin-bottom: 2.2rem; 
+}
+.contact-form input, .contact-form textarea {
+  width: 100%; 
+  padding: 18px 20px; 
+  border: 1px solid rgba(255, 182, 193, 0.4); 
+  border-radius: 12px; 
+  background: rgba(20, 15, 60, 0.8);
+  color: #f0f0f0; 
+  font-size: 16px; 
+  transition: 0.4s;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.contact-form input:focus, .contact-form textarea:focus { 
+  outline: none; 
+  border-color: #7b68ee; 
+  box-shadow: 
+    0 0 0 3px rgba(123, 104, 238, 0.3),
+    inset 0 2px 5px rgba(0, 0, 0, 0.2); 
+  background: rgba(25, 20, 70, 0.9);
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.contact-form label {
+  position: absolute; 
+  top: 50%; 
+  left: 20px; 
+  transform: translateY(-50%);
+  color: #aaa; 
+  transition: 0.3s; 
+  pointer-events: none; 
+  background: transparent;
+  padding: 0 8px;
+}
+.contact-form input:focus + label,
+.contact-form input:not(:placeholder-shown) + label,
+.contact-form textarea:focus + label,
+.contact-form textarea:not(:placeholder-shown) + label {
+  top: -12px; 
+  left: 12px; 
+  font-size: 14px; 
+  color: #ffd1dc; 
+  background: rgba(20, 15, 60, 0.9); 
+  padding: 0 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 182, 193, 0.3);
+}
+.contact-form textarea { 
+  resize: vertical; 
+  min-height: 150px; 
+}
+.contact-form button {
+  background: linear-gradient(135deg, #ff6b9d, #7b68ee);
+  color: white; 
+  border: none; 
+  padding: 18px 35px; 
+  border-radius: 14px;
+  font-size: 17px; 
+  font-weight: 700; 
+  cursor: pointer; 
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.7s;
+}
+
+.contact-form button:hover { 
+  background: linear-gradient(135deg, #7b68ee, #00ced1); 
+  transform: translateY(-5px); 
+  box-shadow: 0 15px 35px rgba(123, 104, 238, 0.5);
+}
+
+.contact-form button:hover::before {
+  left: 100%;
+}
+
+.contact-form button:active {
+  transform: translateY(-2px);
+}
+.success-msg { 
+  color: #4BB543; 
+  margin-top: 20px; 
+  display: none; 
+  font-weight: 600;
+  text-align: center;
+  padding: 15px;
+  background: rgba(75,181,67,0.1);
+  border-radius: 12px;
+  border-left: 4px solid #4BB543;
+  border-right: 4px solid #8BC34A;
+  font-size: 1.1rem;
+}
+
+.error-msg {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 8px;
+  display: block;
+  font-weight: 500;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background: linear-gradient(to top, rgba(15, 12, 41, 0.95), rgba(30, 25, 80, 0.95));
+  text-align: center; 
+  padding: 40px 20px; 
+  color: #ffffff;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 182, 193, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 107, 157, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(123, 104, 238, 0.1) 0%, transparent 30%);
+  z-index: -1;
+}
+
+footer p { 
+  color: #ffd1dc; 
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+}
+</style>
+</head>
+<body>
+
+<!-- Cute Bubbles -->
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+
+<!-- ---------- NAVBAR ---------- -->
+<header>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="join.html">Join</a>
+     </div>
+     <div class="logo">
+     <div class="logo-circle">
+     <span>CIS</span>
+      </div>
+     </div>
+     <div class="nav-right">
+      <a href="events.html">Event</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="resourse.html">Resources</a>
+      <a href="contact.html">Contact</a>
+     </div>
+  </nav>
+</header>
+
+<!-- ---------- CONTACT SECTION ---------- -->
+<section class="contact-section">
+  <h2>Contact Us ✨</h2>
+  <div class="contact-grid">
+    <!-- Contact Info & Map -->
+    <div>
+      <div class="contact-info">
+        <div><i class="fas fa-phone"></i><span>+880 1639-507665</span></div>
+        <div><i class="fas fa-envelope"></i><span>info@cisclub.com</span></div>
+      </div>
+      
+      <!-- Social Ions Section -->
+      <div class="social-icons">
+        <a href="https://www.facebook.com/share/1G9BFPZZxe/" class="fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="insta" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://chat.whatsapp.com/KmBSnW1gGSd1gLxcMAb94D" class="wp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      
+      <!-- Location Section -->
+      <div class="location-container">
+        <h3>Our Location 📍</h3>
+        <div class="location-address">
+          Daffodil Smart City, Birulia, Savar, Dhaka, Bangladesh
+        </div>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.636832506686!2d90.26211937524778!3d23.810977078625763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755ebd3fd6cfb33%3A0x399f3f1c36b0e3d5!2sDaffodil%20Smart%20City%2C%20Birulia%2C%20Savar%2C%20Dhaka%2C%20Bangladesh!5e0!3m2!1sen!2s!4v1710173580456!5m2!1sen!2s"
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-group">
+          <input type="text" id="cname" name="cname" placeholder=" " required>
+          <label for="cname">Full Name</label>
+          <small class="error-msg" id="cnameError"></small>
+        </div>
+        <div class="form-group">
+          <input type="email" id="cemail" name="cemail" placeholder=" " required>
+          <label for="cemail">Email Address</label>
+          <small class="error-msg" id="cemailError"></small>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="cphone" name="cphone" placeholder=" " required>
+          <label for="cphone">Phone Number</label>
+          <small class="error-msg" id="cphoneError"></small>
+        </div>
+        <div class="form-group">
+          <textarea id="cmessage" name="cmessage" placeholder=" " required></textarea>
+          <label for="cmessage">Your Message</label>
+          <small class="error-msg" id="cmessageError"></small>
+        </div>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        <div class="success-msg" id="contactSuccess"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- FOOTER ---------- -->
+<footer>
+  <p>&copy; 2025 CIS Club. All rights reserved. | Daffodil Smart City, Birulia, Savar, Dhaka, Bangladesh 🦋</p>
+</footer>
+
+<!-- ---------- SCRIPT ---------- -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+  const successMsg = document.getElementById("contactSuccess");
+
+  function validateRequired(field) {
+    const value = field.value.trim();
+    const errorElement = document.getElementById(field.id + 'Error');
+    if (!value) { 
+      errorElement.textContent = "This field is required"; 
+      field.style.borderColor = "#ff6b6b";
+      return false; 
+    } else { 
+      errorElement.textContent = ""; 
+      field.style.borderColor = "#7b68ee";
+      return true; 
+    }
+  }
+
+  function validateEmail(field) {
+    const value = field.value.trim();
+    const errorElement = document.getElementById(field.id + 'Error');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!value) { 
+      errorElement.textContent = "Email is required"; 
+      field.style.borderColor = "#ff6b6b";
+      return false; 
+    } else if (!emailRegex.test(value)) { 
+      errorElement.textContent = "Enter a valid email"; 
+      field.style.borderColor = "#ff6b6b";
+      return false; 
+    } else { 
+      errorElement.textContent = ""; 
+      field.style.borderColor = "#7b68ee";
+      return true; 
+    }
+  }
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    let valid = true;
+    if (!validateRequired(form.cname)) valid = false;
+    if (!validateEmail(form.cemail)) valid = false;
+    if (!validateRequired(form.cphone)) valid = false;
+    if (!validateRequired(form.cmessage)) valid = false;
+
+    if (valid) {
+      successMsg.textContent = "✨ Thank you! Your message has been sent successfully!";
+      successMsg.style.display = 'block';
+      form.reset();
+      setTimeout(() => successMsg.style.display = 'none', 5000);
+    } else { 
+      successMsg.style.display = 'none'; 
+    }
+  });
+  
+  // Add input event listeners for real-time validation
+  const inputs = form.querySelectorAll('input, textarea');
+  inputs.forEach(input => {
+    input.addEventListener('input', function() {
+      if (this.type === 'email') {
+        validateEmail(this);
+      } else {
+        validateRequired(this);
+      }
+    });
+  });
+  
+  // Add cute emoji to page title on focus
+  const pageTitle = document.querySelector('title');
+  const originalTitle = pageTitle.textContent;
+  
+  window.addEventListener('focus', () => {
+    pageTitle.textContent = originalTitle + ' ✨';
+  });
+  
+  window.addEventListener('blur', () => {
+    pageTitle.textContent = originalTitle;
+  });
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>
